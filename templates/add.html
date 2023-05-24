@@ -42,27 +42,33 @@
                     <option value="{{ tag.name }}">{{ tag.name }}</option>
                     {% endfor %}
                 </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Add</button>
+                <div class="mt-4">
+                    <div id="selected_tags"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
         </form>
-        <div class="mt-4">
-            <h5>Selected Tags:</h5>
-            <div id="selected_tags"></div>
-        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
+            var tags = JSON.parse('{{ tags | tojson | safe }}');
+
             $('#tags').change(function () {
                 var selectedTags = $(this).val();
                 $('#selected_tags').empty();
 
                 if (selectedTags) {
                     for (var i = 0; i < selectedTags.length; i++) {
-                        var tag = selectedTags[i];
-                        var badge = '<span class="badge badge-primary">' + tag + '</span>';
-                        $('#selected_tags').append(badge);
+                        var tagName = selectedTags[i];
+                        var tag = tags.find(function (t) {
+                            return t.name === tagName;
+                        });
+
+                        if (tag) {
+                            var badge = '<span class="badge badge-' + tag.color + '">' + tag.name + '</span>';
+                            $('#selected_tags').append(badge);
+                        }
                     }
                 }
             });

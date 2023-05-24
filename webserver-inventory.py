@@ -44,13 +44,22 @@ def add_item():
         quantity = int(request.form['quantity'])
         link = request.form['link']
         picture = request.files['picture']
+        form_tags = request.form.getlist('tags[]')
+        selected_tags = []
+        tags = load_config()["tags"]
+        for item in form_tags:
+            for tag in tags:
+                if tag['name'] == item:
+                    selected_tags.append(tag)
+
+
         if picture.filename:
             unique_filename = generate_unique_filename(picture.filename)
             picture.save('static/' + unique_filename)
         else:
             unique_filename = None
         inventory = load_inventory()
-        inventory.append({'item_name': item_name, 'quantity': quantity, 'link': link, 'picture': unique_filename})
+        inventory.append({'item_name': item_name, 'quantity': quantity, 'link': link, 'picture': unique_filename, 'tags': selected_tags})
         save_inventory()
         return redirect(url_for('index'))
     return render_template('add.html', tags = load_config()["tags"])

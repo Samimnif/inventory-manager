@@ -6,6 +6,8 @@
         {"name": "Headset W", "color": "danger"},
         {"name": "Ring Light", "color": "warning"},
         {"name": "Webcam", "color": "info"},
-        {"name": "Monitor", "color": "dark"}
+        {"name": "Monitor", "color": "dark"},
+        {"name": "Laptop Stand", "color": "purple"},
+        {"name": "HDMI Cable", "color": "#D35400"}   
     ]
 }

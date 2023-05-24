@@ -72,7 +72,9 @@ def adjust_quantity(item_name):
     if item:
         if request.method == 'POST':
             quantity = int(request.form['quantity'])
+            link = request.form['link']
             item['quantity'] = quantity
+            item['link'] = link
             print(inventory)
             save_inventory()
             return redirect(url_for('index'))

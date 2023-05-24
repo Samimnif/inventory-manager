@@ -70,10 +70,10 @@
         <h1 class="mt-4 mb-4">Inventory Management</h1>
         <div class="row">
             <div class="btn-group mb-4" role="group">
-                <button type="button" class="btn btn-primary view-toggle" data-view="grid"><i class="bi bi-grid-fill"
-                        style="padding-right: 5px;"></i>Grid View</button>
-                <button type="button" class="btn btn-primary view-toggle" data-view="table"><i class="bi bi-list"
-                        style="padding-right: 5px;"></i>Table
+                <button type="button" class="btn btn-outline-primary view-toggle" data-view="grid"><i
+                        class="bi bi-grid-fill" style="padding-right: 5px;"></i>Grid View</button>
+                <button type="button" class="btn btn-outline-primary view-toggle" data-view="table"><i
+                        class="bi bi-list" style="padding-right: 5px;"></i>Table
                     View</button>
             </div>
             <!--<div class="mb-4 col align-self-end">
@@ -94,15 +94,15 @@
                             <div class="row">
                                 <div class="tags col">
                                     {% for tag in item.tags %}
-                                    <span class="badge badge-{{ tag.color }}">{{ tag.name }}</span>
+                                    <span class="badge badge-{{ tag.color }}" style="background-color: {{tag.color}};">{{ tag.name }}</span>
                                     {% endfor %}
                                 </div>
                             </div>
                             <br>
                             <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button"
                                 class="btn btn-secondary">Edit</button>
-                            <button onclick="location.href='{{ item.link }}'" type="button"
-                                class="btn btn-info">Link</button>
+                            <button onclick="location.href='{{ item.link }}'" type="button" class="btn btn-info" {% if
+                                item.link=="NA" %}disabled{% endif %}>Link</button>
                         </div>
                     </div>
                 </div>
@@ -141,13 +141,13 @@
                         <td>
                             <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button"
                                 class="btn btn-secondary">Edit</button>
-                            <button onclick="location.href='{{ item.link }}'" type="button"
-                                class="btn btn-info">Link</button>
+                            <button onclick="location.href='{{ item.link }}'" type="button" class="btn btn-info" {% if
+                                item.link=="NA" %}disabled{% endif %}>Link</button>
                         </td>
                         <td>
                             <div class="tags">
                                 {% for tag in item.tags %}
-                                <span class="badge badge-{{ tag.color }}">{{ tag.name }}</span>
+                                <span class="badge badge-{{ tag.color }}" style="background-color: {{tag.color}};">{{ tag.name }}</span>
                                 {% endfor %}
                             </div>
                         </td>
@@ -161,13 +161,52 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+        // Function to set the view selection in localStorage
+        function setViewSelection(view) {
+            localStorage.setItem('viewSelection', view);
+        }
+
+        // Function to retrieve the view selection from localStorage
+        function getViewSelection() {
+            return localStorage.getItem('viewSelection');
+        }
+
+        // Function to apply the saved view selection
+        function applyViewSelection() {
+            var savedView = getViewSelection();
+            var viewToggleButtons = $('.view-toggle');
+
+            if (savedView === 'table') {
+                viewToggleButtons.removeClass('active');
+                viewToggleButtons.filter('[data-view="table"]').addClass('active');
+                $('.grid-view').hide();
+                $('.table-view').show();
+            } else {
+                viewToggleButtons.removeClass('active');
+                viewToggleButtons.filter('[data-view="grid"]').addClass('active');
+                $('.table-view').hide();
+                $('.grid-view').show();
+            }
+        }
+
+        // Event listener for view toggle buttons
+        $('.view-toggle').click(function () {
+            var view = $(this).data('view');
+            setViewSelection(view);
+            applyViewSelection();
+        });
+
+        // Apply the saved view selection on page load
+        applyViewSelection();
+
+        /*
         $(document).ready(function () {
             $('.view-toggle').click(function () {
                 var view = $(this).data('view');
                 $('.inventory').hide();
                 $('.inventory.' + view + '-view').show();
             });
-        });
+        });*/
     </script>
 </body>
 

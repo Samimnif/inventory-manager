@@ -1,2 +1,90 @@
 [
+    {
+        "item_name": "MK270-KM",
+        "quantity": 1,
+        "link": "NA",
+        "picture": "20230524163129_2267252c1061457686a03e64f489c974.jpg",
+        "tags": [
+            {
+                "name": "Keyboard",
+                "color": "primary"
+            },
+            {
+                "name": "Mouse",
+                "color": "secondary"
+            }
+        ]
+    },
+    {
+        "item_name": "Keyboard-Mac",
+        "quantity": 1,
+        "link": "NA",
+        "picture": "20230524163213_3fa19c1ee0554e979e0f25ecb2300cac.jpg",
+        "tags": [
+            {
+                "name": "Keyboard",
+                "color": "primary"
+            }
+        ]
+    },
+    {
+        "item_name": "Ring-Light",
+        "quantity": 3,
+        "link": "NA",
+        "picture": "20230524163332_00fc1cb5c3d74cdcaf54c7aeae1b1abe.jpg",
+        "tags": [
+            {
+                "name": "Ring Light",
+                "color": "warning"
+            }
+        ]
+    },
+    {
+        "item_name": "MK120 Keyboard/Mouse",
+        "quantity": 1,
+        "link": "NA",
+        "picture": "20230524163442_d1763b42f09149ffb930edc2a8b81ec9.jpg",
+        "tags": [
+            {
+                "name": "Keyboard",
+                "color": "primary"
+            },
+            {
+                "name": "Mouse",
+                "color": "secondary"
+            }
+        ]
+    },
+    {
+        "item_name": "RedDragon-KM",
+        "quantity": 1,
+        "link": "NA",
+        "picture": "20230524163537_50c32a7b194f49f7a98610c155f821a3.jpg",
+        "tags": [
+            {
+                "name": "Keyboard",
+                "color": "primary"
+            },
+            {
+                "name": "Mouse",
+                "color": "secondary"
+            },
+            {
+                "name": "HDMI Cable",
+                "color": "#D35400"
+            }
+        ]
+    },
+    {
+        "item_name": "H390-Headset",
+        "quantity": 3,
+        "link": "https://www.amazon.ca/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech+h390+headset&qid=1670953192&s=electronics&sprefix=logi+h390+headset%2Celectronics%2C70&sr=1-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
+        "picture": "20230524163630_2d73e05260f74ac9b90ff4a06861afac.jpg",
+        "tags": [
+            {
+                "name": "Headset W",
+                "color": "danger"
+            }
+        ]
+    }
 ]

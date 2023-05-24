@@ -6,31 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .thumbnail {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <h1 class="mt-4 mb-4">Inventory Management</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Preview</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in inventory %}
-                <tr>
-                    <td>{{ item.item_name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td><img src="{{ url_for('static', filename=item.picture) }}" alt="Preview" height="50"></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="row">
+            {% for item in inventory %}
+            <div class="col-md-2">
+                <div class="card mb-2">
+                    <img class="card-img-top thumbnail" src="{{ url_for('static', filename=item.picture) }}"
+                        alt="Preview" data-toggle="modal" data-target="#modal{{ loop.index }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.item_name }}</h5>
+                        <p class="card-text">Quantity: {{ item.quantity }}</p>
+                        <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button" class="btn btn-secondary">Edit</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal{{ loop.index }}" tabindex="-1" role="dialog"
+                aria-labelledby="modal{{ loop.index }}Label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <img class="img-fluid" src="{{ url_for('static', filename=item.picture) }}"
+                                alt="Preview" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
         <a class="btn btn-primary" href="{{ url_for('add_item') }}">Add Item</a>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

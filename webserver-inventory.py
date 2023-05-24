@@ -15,6 +15,7 @@ def load_inventory():
         return []
 
 def save_inventory():
+    global inventory
     with open('inventory.json', 'w') as file:
         json.dump(inventory, file, indent=4)
 
@@ -27,11 +28,13 @@ def generate_unique_filename(filename):
 
 @app.route('/')
 def index():
+    global inventory
     inventory = load_inventory()
     return render_template('index.html', inventory=inventory)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_item():
+    global inventory
     if request.method == 'POST':
         item_name = request.form['item_name']
         quantity = int(request.form['quantity'])
@@ -48,12 +51,14 @@ def add_item():
 
 @app.route('/adjust/<item_name>', methods=['GET', 'POST'])
 def adjust_quantity(item_name):
+    global inventory
     inventory = load_inventory()
     item = next((item for item in inventory if item['item_name'] == item_name), None)
     if item:
         if request.method == 'POST':
             quantity = int(request.form['quantity'])
             item['quantity'] = quantity
+            print(inventory)
             save_inventory()
             return redirect(url_for('index'))
         return render_template('adjust.html', item=item)

@@ -7,6 +7,10 @@ from datetime import datetime
 app = Flask(__name__)
 inventory = []
 
+def load_config():
+    with open('config.json') as file:
+        return json.load(file)
+
 def load_inventory():
     try:
         with open('inventory.json', 'r') as file:
@@ -38,16 +42,18 @@ def add_item():
     if request.method == 'POST':
         item_name = request.form['item_name']
         quantity = int(request.form['quantity'])
+        link = request.form['link']
         picture = request.files['picture']
         if picture.filename:
             unique_filename = generate_unique_filename(picture.filename)
             picture.save('static/' + unique_filename)
         else:
             unique_filename = None
-        inventory.append({'item_name': item_name, 'quantity': quantity, 'picture': unique_filename})
+        inventory = load_inventory()
+        inventory.append({'item_name': item_name, 'quantity': quantity, 'link': link, 'picture': unique_filename})
         save_inventory()
         return redirect(url_for('index'))
-    return render_template('add.html')
+    return render_template('add.html', tags = load_config()["tags"])
 
 @app.route('/adjust/<item_name>', methods=['GET', 'POST'])
 def adjust_quantity(item_name):

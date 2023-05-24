@@ -6,50 +6,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <!--Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
         .thumbnail {
             cursor: pointer;
+        }
+
+        .grid-view .card {
+            /*width: 18rem;
+            margin-bottom: 2rem;*/
+        }
+
+        .table-view .card {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .table-view .card-body {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .table-view .card-title {
+            flex: 1;
         }
     </style>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-md">
+            <a class="navbar-brand" href="/">Logistics</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('add_item') }}"><i class="bi bi-plus-square"
+                                style="padding-right: 5px;"></i>Add Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">About</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <h1 class="mt-4 mb-4">Inventory Management</h1>
         <div class="row">
-            {% for item in inventory %}
-            <div class="col-md-2">
-                <div class="card mb-2">
-                    <img class="card-img-top thumbnail" src="{{ url_for('static', filename=item.picture) }}"
-                        alt="Preview" data-toggle="modal" data-target="#modal{{ loop.index }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ item.item_name }}</h5>
-                        <p class="card-text">Quantity: {{ item.quantity }}</p>
-                        <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button" class="btn btn-secondary">Edit</button>
-                    </div>
-                </div>
+            <div class="btn-group mb-4" role="group">
+                <button type="button" class="btn btn-primary view-toggle" data-view="grid"><i class="bi bi-grid-fill"
+                        style="padding-right: 5px;"></i>Grid View</button>
+                <button type="button" class="btn btn-primary view-toggle" data-view="table"><i class="bi bi-list"
+                        style="padding-right: 5px;"></i>Table
+                    View</button>
             </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="modal{{ loop.index }}" tabindex="-1" role="dialog"
-                aria-labelledby="modal{{ loop.index }}Label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <img class="img-fluid" src="{{ url_for('static', filename=item.picture) }}"
-                                alt="Preview" >
+            <!--<div class="mb-4 col align-self-end">
+                <a class="btn btn-success" href="{{ url_for('add_item') }}"><i class="bi bi-plus-square"
+                        style="padding-right: 5px;"></i>Add Item</a>
+            </div>-->
+        </div>
+        <div class="inventory grid-view">
+            <div class="row">
+                {% for item in inventory %}
+                <div class="col-md-3">
+                    <div class="card mb-3">
+                        <img class="card-img-top thumbnail" src="{{ url_for('static', filename=item.picture) }}"
+                            alt="Preview" data-toggle="modal" data-target="#modal{{ loop.index }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.item_name }}</h5>
+                            <p class="card-text">Quantity: {{ item.quantity }}</p>
+                            <div class="row">
+                                <div class="tags col">
+                                    {% for tag in item.tags %}
+                                    <span class="badge badge-{{ tag.color }}">{{ tag.name }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <br>
+                            <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button"
+                                class="btn btn-secondary">Edit</button>
+                            <button onclick="location.href='{{ item.link }}'" type="button"
+                                class="btn btn-info">Link</button>
                         </div>
                     </div>
                 </div>
+                <!-- Modal -->
+                <div class="modal fade" id="modal{{ loop.index }}" tabindex="-1" role="dialog"
+                    aria-labelledby="modal{{ loop.index }}Label" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img class="img-fluid" src="{{ url_for('static', filename=item.picture) }}"
+                                    alt="Preview">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-        <a class="btn btn-primary" href="{{ url_for('add_item') }}">Add Item</a>
+        <div class="inventory table-view" style="display: none;">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Preview</th>
+                        <th>Actions</th>
+                        <th>Tags</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in inventory %}
+                    <tr>
+                        <td>{{ item.item_name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td><img src="{{ url_for('static', filename=item.picture) }}" alt="Preview" height="50"></td>
+                        <td>
+                            <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button"
+                                class="btn btn-secondary">Edit</button>
+                            <button onclick="location.href='{{ item.link }}'" type="button"
+                                class="btn btn-info">Link</button>
+                        </td>
+                        <td>
+                            <div class="tags">
+                                {% for tag in item.tags %}
+                                <span class="badge badge-{{ tag.color }}">{{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.view-toggle').click(function () {
+                var view = $(this).data('view');
+                $('.inventory').hide();
+                $('.inventory.' + view + '-view').show();
+            });
+        });
+    </script>
 </body>
 
 </html>

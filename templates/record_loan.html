@@ -15,7 +15,14 @@
 <body>
     <div class="container">
         <h1 class="mt-4 mb-4">Record Loan</h1>
-        <h4><a href="/"><i class="bi bi-arrow-left"></i></a></h4>
+        <div class="row">
+            <div class="col">
+                <h4><a href="/loaned"><i class="bi bi-arrow-left"></i></a></h4>
+            </div class="col">
+            <div>
+                <h4><a href="/"><i class="bi bi-house"></i></a></h4>
+            </div>
+        </div>
         <form method="post">
             <div class="form-group">
                 <label for="loaner_name">Loaner Name:</label>
@@ -26,7 +33,9 @@
                 <select class="form-control" id="loaned_item" name="loaned_item" required>
                     <option value="" disabled selected>Select item</option>
                     {% for item in inventory %}
-                    <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+                        {% if item.quantity != 0 %}
+                            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>

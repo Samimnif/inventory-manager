@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <!--Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Shopping List</h1>
+        <h4><a href="/"><i class="bi bi-arrow-left"></i></a></h4>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Link</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in shopping_list %}
+                        {% if item.purchased == 'no' %}
+                        <tr>
+                            <td>{{ item.item }}</td>
+                            <td><a href="{{ item.link }}"><i class="bi bi-link-45deg"></i></a></td>
+                            <td>{{ item.quantity }}</td>
+                            <td>
+                                <form method="POST" action="{{ url_for('purchase') }}">
+                                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#confirmPurchase-{{ item.id }}">Purchased</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="confirmPurchase-{{ item.id }}" tabindex="-1"
+                                        aria-labelledby="purchaseLabel-{{ item.id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="purchaseLabel-{{ item.id }}">Confirm Purchase
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Did you purchase {{ item.quantity }} {{ item.item }}?<br>Link: <a
+                                                        href="{{ item.link }}"><i class="bi bi-link-45deg"></i></a>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-bs-dismiss="modal">No</button>
+                                                    <button type="submit" class="btn btn-success">Yes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h4>Add Item to Shopping List</h4>
+                <form method="POST" action="{{ url_for('shopping') }}">
+                    <div class="form-group">
+                        <label for="item">Item:</label>
+                        <input type="text" class="form-control" id="item" name="item" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="link">Merchant Link:</label>
+                        <input type="text" class="form-control" id="link" name="link" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" required>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Add Item</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-hover caption-top">
+                    <caption>Purchase History</caption>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Link</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Date of Purchase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in shopping_list %}
+                    {% if item.purchased != 'no' %}
+                    <tr>
+                        <td>{{ item.item }}</td>
+                        <td><a href="{{ item.link }}"><i class="bi bi-link-45deg"></i></a></td>
+                        <td>{{ item.quantity }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('index') }}">
+                                <input type="hidden" name="item_index" value="{{ loop.index }}">
+                                <button type="button" class="btn btn-success btn-sm" disabled>Purchased</button>
+                            </form>
+                        </td>
+                        <td>{{ item.date }}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+
+</html>

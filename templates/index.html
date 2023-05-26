@@ -72,8 +72,18 @@
                                 style="padding-right: 5px;"></i>Remove Item</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('loaned_page') }}"><i class="bi bi-clipboard2-data"
+                        <a class="nav-link" href="{{ url_for('loaned_page') }}"><i class="bi bi-card-list"
                                 style="padding-right: 5px;"></i>Loaned Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('shopping') }}"><i class="bi bi-basket"
+                                style="padding-right: 5px;"></i>Shopping Cart
+                            {% if shopItems != 0 %}<span class="badge text-bg-warning">{{shopItems}}</span>{% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://macni7041-mini.cunet.carleton.ca"><i class="bi bi-diagram-3"
+                                style="padding-right: 5px;"></i>MainHub</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled">About</a>
@@ -106,12 +116,14 @@
             <div class="row">
                 {% for item in inventory %}
                 <div class="col-md-3">
-                    <div class="card mb-3">
+                    <div class="card {% if item.quantity == 0 %}text-bg-warning{% endif %} mb-3">
                         <img class="card-img-top thumbnail" src="{{ url_for('static', filename=item.picture) }}"
                             alt="Preview" data-toggle="modal" data-target="#modal{{ loop.index }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ item.item_name }}</h5>
-                            <p class="card-text">Quantity: {{ item.quantity }}</p>
+                            <p class="card-text">Quantity: {{ item.quantity }} {% if item.quantity == 0 %}<i
+                                    class="bi bi-exclamation-triangle-fill"
+                                    style="padding-left: 5px; color: red;"></i>{% endif %}</p>
                             <div class="row">
                                 <div class="tags col">
                                     {% for tag in item.tags %}
@@ -156,15 +168,16 @@
                 </thead>
                 <tbody>
                     {% for item in inventory %}
-                    <tr>
+                    <tr {% if item.quantity==0 %}class="table-warning" {% endif %}>
                         <td>{{ item.item_name }}</td>
-                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.quantity }} {% if item.quantity == 0 %}<i class="bi bi-exclamation-triangle-fill"
+                                style="padding-left: 5px; color: red;"></i>{% endif %}</td>
                         <td><img src="{{ url_for('static', filename=item.picture) }}" alt="Preview" height="50"></td>
                         <td>
                             <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button"
                                 class="btn btn-secondary">Edit</button>
-                            <button onclick="location.href='{{ item.link }}'" type="button" class="btn btn-info" {% if
-                                item.link=="NA" %}disabled{% endif %}>Link</button>
+                            <button onclick="window.open('{{ item.link }}', '_blank')" type="button"
+                                class="btn btn-info" {% if item.link=="NA" %}disabled{% endif %}>Link</button>
                         </td>
                         <td>
                             <div class="tags">

@@ -6,6 +6,19 @@ from datetime import datetime
 
 app = Flask(__name__)
 inventory = []
+loaner = []
+
+def save_loan():
+    global loaner
+    with open('loaner.json', 'w') as file:
+        json.dump(loaner, file, indent=4)
+
+def load_loan():
+    try:
+        with open('loaner.json', 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return []
 
 def load_config():
     with open('config.json') as file:
@@ -80,6 +93,49 @@ def adjust_quantity(item_name):
             return redirect(url_for('index'))
         return render_template('adjust.html', item=item)
     return redirect(url_for('index'))
+
+@app.route('/remove', methods=['GET', 'POST'])
+def remove_item():
+    global inventory
+    inventory = load_inventory()
+    if request.method == 'POST':
+        selected_items = request.form.getlist('item_checkbox')
+        print(selected_items)
+        # Remove selected items from inventory
+        for item in inventory.copy():
+            if item['item_name'] in selected_items:
+                print('found')
+                inventory.remove(item)
+        save_inventory()
+        return redirect(url_for('index'))
+
+    return render_template('remove.html', inventory=inventory)
+
+@app.route('/record_loan', methods=['GET', 'POST'])
+def record_loan():
+    global inventory, loaner
+    inventory = load_inventory()
+    loaner = load_loan()
+    if request.method == 'POST':
+        loaner_name = request.form['loaner_name']
+        loaned_item = request.form['loaned_item']
+
+        # Save the loan object to loaner.json
+        loaner = load_loan()
+        loaner.append({"loaner_name": loaner_name, "loaned_item": loaned_item})
+        save_loan()
+        return redirect(url_for('index'))
+
+    return render_template('record_loan.html', inventory=inventory)
+
+@app.route('/loaned')
+def loaned_page():
+    global loaner, inventory
+    inventory = load_inventory()
+    loaner = load_loan()
+    print(inventory)
+    print(loaner)
+    return render_template('loaned.html', loaned_items=loaner, items=inventory)
 
 if __name__ == '__main__':
     app.run(debug=True,host="172.17.26.2")

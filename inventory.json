@@ -1,6 +1,6 @@
 [
     {
-        "item_name": "MK270-KM",
+        "item_name": "MK270",
         "quantity": 1,
         "link": "NA",
         "picture": "20230524163129_2267252c1061457686a03e64f489c974.jpg",
@@ -16,7 +16,7 @@
         ]
     },
     {
-        "item_name": "Keyboard-Mac",
+        "item_name": "Keyboard",
         "quantity": 1,
         "link": "NA",
         "picture": "20230524163213_3fa19c1ee0554e979e0f25ecb2300cac.jpg",
@@ -24,6 +24,10 @@
             {
                 "name": "Keyboard",
                 "color": "primary"
+            },
+            {
+                "name": " Mac",
+                "color": "#243100"
             }
         ]
     },
@@ -36,11 +40,15 @@
             {
                 "name": "Ring Light",
                 "color": "warning"
+            },
+            {
+                "name": "Wired",
+                "color": "danger"
             }
         ]
     },
     {
-        "item_name": "MK120 Keyboard/Mouse",
+        "item_name": "MK120",
         "quantity": 1,
         "link": "NA",
         "picture": "20230524163442_d1763b42f09149ffb930edc2a8b81ec9.jpg",
@@ -70,8 +78,8 @@
                 "color": "secondary"
             },
             {
-                "name": "HDMI Cable",
-                "color": "#D35400"
+                "name": "Mouse Pad",
+                "color": "#CCCCFF"
             }
         ]
     },
@@ -82,7 +90,11 @@
         "picture": "20230524163630_2d73e05260f74ac9b90ff4a06861afac.jpg",
         "tags": [
             {
-                "name": "Headset W",
+                "name": "Headset",
+                "color": "success"
+            },
+            {
+                "name": "Wired",
                 "color": "danger"
             }
         ]

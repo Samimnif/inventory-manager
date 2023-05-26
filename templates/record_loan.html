@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Loan</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Record Loan</h1>
+        <h4><a href="/"><i class="bi bi-arrow-left"></i></a></h4>
+        <form method="post">
+            <div class="form-group">
+                <label for="loaner_name">Loaner Name:</label>
+                <input type="text" class="form-control" id="loaner_name" name="loaner_name" required>
+            </div>
+            <div class="form-group">
+                <label for="loaned_item">Loaned Item:</label>
+                <select class="form-control" id="loaned_item" name="loaned_item" required>
+                    <option value="" disabled selected>Select item</option>
+                    {% for item in inventory %}
+                    <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Record Loan</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+
+</html>

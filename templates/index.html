@@ -172,7 +172,8 @@
                         <td>{{ item.item_name }}</td>
                         <td>{{ item.quantity }} {% if item.quantity == 0 %}<i class="bi bi-exclamation-triangle-fill"
                                 style="padding-left: 5px; color: red;"></i>{% endif %}</td>
-                        <td><img src="{{ url_for('static', filename=item.picture) }}" alt="Preview" height="50"></td>
+                        <td><img src="{{ url_for('static', filename=item.picture) }}" alt="Preview" height="50"
+                                data-toggle="modal" data-target="#modal2{{ loop.index }}"></td>
                         <td>
                             <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button"
                                 class="btn btn-secondary">Edit</button>
@@ -188,6 +189,18 @@
                             </div>
                         </td>
                     </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal2{{ loop.index }}" tabindex="-1" role="dialog"
+                        aria-labelledby="modal2{{ loop.index }}Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img class="img-fluid" src="{{ url_for('static', filename=item.picture) }}"
+                                        alt="Preview">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {% endfor %}
                 </tbody>
             </table>

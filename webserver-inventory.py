@@ -3,6 +3,7 @@ import json
 import os
 import uuid
 from datetime import datetime
+import socket
 
 app = Flask(__name__)
 inventory = []
@@ -109,6 +110,16 @@ def adjust_quantity(item_name):
         if request.method == 'POST':
             quantity = int(request.form['quantity'])
             link = request.form['link']
+            form_tags = request.form.getlist('tags[]')
+            selected_tags = []
+            tags = load_config()["tags"]
+            for i in form_tags:
+                for tag in tags:
+                    if tag['name'] == i:
+                        selected_tags.append(tag)
+            print(selected_tags)
+            print(item['tags'])
+            item['tags']= selected_tags
             item['quantity'] = quantity
             item['link'] = link
             print(inventory)
@@ -175,8 +186,8 @@ def shopping():
         shopping.append({'item': item, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no"})
         save_shop()
         return redirect(url_for('shopping'))
-    
     return render_template('shopping.html', shopping_list=shopping)
+
 @app.route('/purchase', methods=['POST'])
 def purchase():
     global shopping
@@ -191,5 +202,39 @@ def purchase():
                 break
         return redirect(url_for('shopping'))
 
+@app.route('/edit_shopping', methods=['POST'])
+def edit_shopping():
+    global shopping
+    shopping = load_shop()
+    if request.method == 'POST':
+        name = request.form['name']
+        link = request.form['link']
+        quantity = request.form['quantity']
+        itemID = request.form['item_id']
+        for item in shopping:
+            if item['id'] == itemID:
+                item['item'] = name
+                item['link'] = link
+                item['quantity'] = quantity
+                save_shop()
+                break
+        return redirect(url_for('shopping'))
+
+@app.route('/delete_shopping', methods=['POST'])
+def delete_shopping():
+    global shopping
+    shopping = load_shop()
+    if request.method == 'POST':
+        itemID = request.form['item_id']
+        for item in shopping.copy():
+            if item['id'] == itemID:
+                print('found')
+                shopping.remove(item)
+                save_shop()
+                break
+        return redirect(url_for('shopping'))
+
 if __name__ == '__main__':
-    app.run(debug=True,host="172.17.26.2")
+    hostname=socket.gethostname()   
+    IPAddr=socket.gethostbyname(hostname) 
+    app.run(debug=True,host=f"{IPAddr}")

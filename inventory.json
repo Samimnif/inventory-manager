@@ -12,6 +12,10 @@
             {
                 "name": "Mouse",
                 "color": "secondary"
+            },
+            {
+                "name": "Wireless",
+                "color": "#0B5345 "
             }
         ]
     },
@@ -28,6 +32,14 @@
             {
                 "name": "\uf8ff Mac",
                 "color": "#243100"
+            },
+            {
+                "name": "Wireless",
+                "color": "#0B5345 "
+            },
+            {
+                "name": "Bluetooth",
+                "color": "#0004FF "
             }
         ]
     },
@@ -60,6 +72,10 @@
             {
                 "name": "Mouse",
                 "color": "secondary"
+            },
+            {
+                "name": "Wired",
+                "color": "danger"
             }
         ]
     },
@@ -80,6 +96,10 @@
             {
                 "name": "Mouse Pad",
                 "color": "#CCCCFF"
+            },
+            {
+                "name": "Wired",
+                "color": "danger"
             }
         ]
     },

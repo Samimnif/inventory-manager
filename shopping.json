@@ -1,10 +1,11 @@
 [
     {
-        "item": "Japanese Snacks Assortment",
+        "item": "F Japanese Snacks Assortment",
         "link": "https://www.amazon.ca/Japanese-Assortment-Excellent-Delicious-Selection/dp/B08P7NCCT9/?_encoding=UTF8&pd_rd_w=5O6Jz&content-id=amzn1.sym.ba8581f3-7044-404a-934b-4b4f21271994&pf_rd_p=ba8581f3-7044-404a-934b-4b4f21271994&pf_rd_r=JBHXHQJ6EMB9WVQFJPC0&pd_rd_wg=1lAYU&pd_rd_r=fd8152b6-7dbe-4a16-b2f9-21d826c3e7d3&ref_=pd_gw_trq_ed_qc5z7jkn",
-        "quantity": "1",
+        "quantity": "5",
         "id": "3ba2982d5c1e4efcb54b5fd0bea15500",
-        "purchased": "no"
+        "purchased": "yes",
+        "date": "2023-05-26 @ 22:31:59"
     },
     {
         "item": "Logitech H390 Wired Headset",
@@ -18,6 +19,7 @@
         "link": "https://www.amazon.ca/Norton-360-2021-Antivirus-Subscription/dp/B09NS9XYRM/?_encoding=UTF8&_ref=dlx_gate_sd_dcl_tlt_54cb3e72_dt&pd_rd_w=5pMiW&content-id=amzn1.sym.6d21227a-59db-4b0b-9218-408a56e7173e&pf_rd_p=6d21227a-59db-4b0b-9218-408a56e7173e&pf_rd_r=58DVRZNN5TM7PX10NNQS&pd_rd_wg=rhMwK&pd_rd_r=29370b3c-c0e5-4f9d-ade0-5859d22c950f&ref_=pd_gw_unk",
         "quantity": "3",
         "id": "83ff733654e34d268e0a94ed42c229c3",
-        "purchased": "no"
+        "purchased": "yes",
+        "date": "2023-05-26 @ 22:26:39"
     }
 ]

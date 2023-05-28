@@ -20,7 +20,8 @@
         <h4><a href="/"><i class="bi bi-arrow-left"></i></a></h4>
         <div class="row">
             <div class="col-md-6">
-                <table class="table table-hover">
+                <table class="table table-hover caption-top">
+                    <caption>Shopping List</caption>
                     <thead>
                         <tr>
                             <th>Item</th>
@@ -39,32 +40,114 @@
                             <td>
                                 <form method="POST" action="{{ url_for('purchase') }}">
                                     <input type="hidden" name="item_id" value="{{ item.id }}">
-                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#confirmPurchase-{{ item.id }}">Purchased</button>
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#confirmPurchase-{{ item.id }}">Complete</button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="confirmPurchase-{{ item.id }}" tabindex="-1"
                                         aria-labelledby="purchaseLabel-{{ item.id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="purchaseLabel-{{ item.id }}">Confirm Purchase
+                                                    <h1 class="modal-title fs-5" id="purchaseLabel-{{ item.id }}">
+                                                        Confirm Purchase
                                                     </h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Did you purchase {{ item.quantity }} {{ item.item }}?<br>Link: <a
-                                                        href="{{ item.link }}"><i class="bi bi-link-45deg"></i></a>
+                                                    Did you purchase <b>{{ item.quantity }}x</b> {{ item.item
+                                                    }}?<br>Link: <a href="{{ item.link }}"><i
+                                                            class="bi bi-link-45deg"></i></a>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger"
-                                                        data-bs-dismiss="modal">No</button>
-                                                    <button type="submit" class="btn btn-success">Yes</button>
+                                                        data-bs-dismiss="modal"><i class="bi bi-x-lg"
+                                                            style="padding-right: 5px;"></i>No</button>
+                                                    <button type="submit" class="btn btn-success"><i
+                                                            class="bi bi-check-lg"
+                                                            style="padding-right: 5px;"></i>Yes</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
+                                <form method="POST" action="{{ url_for('edit_shopping') }}">
+                                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#editPurchase-{{ item.id }}">Edit</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="editPurchase-{{ item.id }}" tabindex="-1"
+                                        aria-labelledby="editLabel-{{ item.id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="editLabel-{{ item.id }}">
+                                                        Edit Item:
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="name">Item Name:</label>
+                                                        <input type="text" class="form-control" id="name" name="name"
+                                                            value="{{item.item}}" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="link">Merchant Link:</label>
+                                                        <input type="text" class="form-control" id="link" name="link"
+                                                            value="{{item.link}}" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="quantity">Quantity:</label>
+                                                        <input type="number" class="form-control" id="quantity"
+                                                            name="quantity" value="{{item.quantity}}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#deletePurchase-{{ item.id }}"><i
+                                                            class="bi bi-trash3"
+                                                            style="padding-right: 5px;"></i>Delete</button>
+                                                    <button type="submit" class="btn btn-success"><i
+                                                            class="bi bi-arrow-repeat"
+                                                            style="padding-right: 5px;"></i>Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Modal 2-->
+                                <form method="POST" action="{{ url_for('delete_shopping') }}">
+                                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                                    <div class="modal fade" id="deletePurchase-{{ item.id }}" tabindex="-1"
+                                        aria-labelledby="delLabel-{{ item.id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="delLabel-{{ item.id }}">
+                                                        Delete Item:
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete the following
+                                                    item:<br><b>{{item.item}}</b>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-bs-dismiss="modal"><i class="bi bi-x-lg"
+                                                            style="padding-right: 5px;"></i>No</button>
+                                                    <button type="submit" class="btn btn-success"><i
+                                                            class="bi bi-trash3"
+                                                            style="padding-right: 5px;"></i>Yes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </td>
                         </tr>
                         {% endif %}
@@ -93,8 +176,8 @@
             </div>
         </div>
         <div class="row">
-            <table class="table table-hover caption-top">
-                    <caption>Purchase History</caption>
+            <table class="table table-hover table-responsive caption-top">
+                <caption>Purchase History</caption>
                 <thead>
                     <tr>
                         <th>Item</th>
@@ -114,7 +197,8 @@
                         <td>
                             <form method="POST" action="{{ url_for('index') }}">
                                 <input type="hidden" name="item_index" value="{{ loop.index }}">
-                                <button type="button" class="btn btn-success btn-sm" disabled>Purchased</button>
+                                <button type="button" class="btn btn-success btn-sm" disabled><i class="bi bi-check-all"
+                                        style="padding-right: 5px;"></i>Purchased</button>
                             </form>
                         </td>
                         <td>{{ item.date }}</td>

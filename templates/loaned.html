@@ -34,7 +34,7 @@
                     {% endfor %}
                     <div class="card-body">
                         <h5 class="card-title">{{ item.loaned_item }}</h5>
-                        <p class="card-text">Loaned By: {{ item.loaner_name }}</p>
+                        <p class="card-text">Loaned For: <b>{{ item.loaner_name }}</b></p>
                         <p class="card-text">Date Loaned:<br>{{ item.date }}</p>
                     </div>
                 </div>

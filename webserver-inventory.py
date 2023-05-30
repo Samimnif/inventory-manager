@@ -71,7 +71,26 @@ def index():
     global inventory, shopping
     inventory = load_inventory()
     shopping = load_shop()
-    return render_template('index.html', inventory=inventory, shopItems=unpurchased_items())
+    return render_template('index.html', inventory=inventory, shopItems=unpurchased_items(), tags = load_config()["tags"])
+
+@app.route('/search', methods=['POST'])
+def search():
+    global inventory
+    inventory = load_inventory()
+
+    if request.method == 'POST':
+        search_query = request.form.get('search-query')
+        selected_tags = request.form.getlist('selected-tags')
+
+        # Perform search logic
+        search_results = []
+        for item in inventory:
+            if search_query.lower() in item['item_name'].lower() and all(tag in item['tags'] for tag in selected_tags):
+                search_results.append(item)
+
+        return render_template('search_results.html', search_query=search_query, selected_tags=selected_tags, results=search_results)
+
+    return redirect(url_for('index'))
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_item():

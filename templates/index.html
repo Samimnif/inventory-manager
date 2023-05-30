@@ -89,9 +89,65 @@
                         <a class="nav-link disabled">About</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <!--
+                <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="selected-tags-dropdown"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tags
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="selected-tags-dropdown">
+                        <div id="selected-tags">
+
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" id="clear-selected-tags">Clear Tags</a>
+                    </div>
+                </div>
+
+                <form class="d-flex" id="search-form" role="search">
+                    <input class="form-control me-2" id="search-input" name="search-input" type="search"
+                        placeholder="Search" aria-label="Search">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                            id="search-tags-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Add Tags
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="search-tags-dropdown">
+                            {% for tag in tags %}
+                            <a class="dropdown-item search-tag-option" href="#" data-tag="{{ tag.name }}"
+                                data-color="{{ tag.color }}">{{ tag.name }}</a>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-success">Search</button>
+                </form>-->
+                <button class="btn btn-outline-success" data-bs-toggle="modal"
+                data-bs-target="#searchBar"><i class="bi bi-search"></i></button>
+                <!-- Modal 2-->
+                <form method="POST" action="{{ url_for('search') }}">
+                    <input type="hidden" name="item_id" value="">
+                    <div class="modal fade" id="searchBar" tabindex="-1"
+                        aria-labelledby="searchBarLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="searchBarLabel">
+                                        Search:
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    A
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger"><i class="bi bi-trash3"
+                                            style="padding-right: 5px;"></i>Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -256,6 +312,71 @@
                 $('.inventory.' + view + '-view').show();
             });
         });*/
+        $(document).ready(function () {
+            $('.search-tag-option').click(function (e) {
+                e.preventDefault();
+                var selectedTag = $(this).data('tag');
+                var tagColor = $(this).data('color');
+                var badge = '<span class="badge text-bg-' + tagColor + '" style="background-color:' + tagColor + ';">' + selectedTag + '</span>';
+                $('#selected-tags').append(badge);
+            });
+
+            $('#tags').click(function () {
+                $(this).siblings('.dropdown-toggle').dropdown('show');
+            });
+
+            $('#clear-selected-tags').click(function (e) {
+                e.preventDefault();
+                $('#selected-tags').empty();
+            });
+
+            $('form').submit(function (e) {
+                e.preventDefault();
+                var searchQuery = $('#search-input').val();
+                var selectedTags = [];
+
+                $('#selected-tags .badge').each(function () {
+                    var tag = $(this).text();
+                    selectedTags.push(tag);
+                });
+
+                // Perform AJAX request or update the page with search results based on the searchQuery and selected tags
+                // You can send the searchQuery and selected tags to your Flask backend and retrieve the search results accordingly
+                // Update the page with the search results dynamically
+            });
+
+            // Handle the search form submission
+            $('#search-form').submit(function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get the search query and selected tags
+                var searchQuery = $('#search-input').val();
+                var selectedTags = [];
+                $('input[name="selected-tags"]:checked').each(function () {
+                    selectedTags.push($(this).val());
+                });
+
+                // Send an AJAX request to the search route
+                $.ajax({
+                    type: 'POST',
+                    url: '/search',
+                    data: {
+                        'search-query': searchQuery,
+                        'selected-tags': selectedTags
+                    },
+                    success: function (response) {
+                        // Render the search results
+                        $('#search-results').html(response);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+
+
+
     </script>
 </body>
 

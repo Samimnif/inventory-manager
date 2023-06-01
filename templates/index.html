@@ -122,13 +122,13 @@
                     </div>
                     <button type="submit" class="btn btn-outline-success">Search</button>
                 </form>-->
-                <button class="btn btn-outline-success" data-bs-toggle="modal"
-                data-bs-target="#searchBar"><i class="bi bi-search"></i></button>
-                <!-- Modal 2-->
+                <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#searchBar"><i
+                        class="bi bi-search"></i></button>
+                <!-- Search Modal-->
                 <form method="POST" action="{{ url_for('search') }}">
                     <input type="hidden" name="item_id" value="">
-                    <div class="modal fade" id="searchBar" tabindex="-1"
-                        aria-labelledby="searchBarLabel" aria-hidden="true">
+                    <div class="modal fade" id="searchBar" tabindex="-1" aria-labelledby="searchBarLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -139,7 +139,28 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    A
+                                    <div class="row">
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="floatingInput"
+                                                placeholder="name@example.com">
+                                            <label for="floatingInput"><i class="bi bi-search"
+                                                    style="padding: 5px;"></i>Search</label>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                            id="search-tags-dropdown" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Add Tags
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="search-tags-dropdown">
+                                            {% for tag in tags %}
+                                            <a class="dropdown-item search-tag-option" href="#"
+                                                data-tag="{{ tag.name }}" data-color="{{ tag.color }}">{{ tag.name
+                                                }}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-danger"><i class="bi bi-trash3"

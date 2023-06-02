@@ -25,19 +25,23 @@
         </div>
         <form method="post">
             <div class="form-group">
-                <label for="loaner_name">Loaner Name:</label>
+                <label for="loaner_name">Borrower Name:</label>
                 <input type="text" class="form-control" id="loaner_name" name="loaner_name" required>
             </div>
             <div class="form-group">
-                <label for="loaned_item">Loaned Item:</label>
+                <label for="loaned_item">Item:</label>
                 <select class="form-control" id="loaned_item" name="loaned_item" required>
-                    <option value="" disabled selected>Select item</option>
+                    <option value="" disabled selected>Select available item</option>
                     {% for item in inventory %}
                         {% if item.quantity != 0 %}
                             <option value="{{ item.item_name }}" {% if item.item_name == item_option %} selected="selected" {% endif %}>{{ item.item_name }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="date_return">Return Date:</label>
+                <input type="date" class="form-control" id="date_return" name="date_return" required>
             </div>
             <button type="submit" class="btn btn-primary">Record Loan</button>
         </form>

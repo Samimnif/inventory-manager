@@ -4,7 +4,9 @@ import os
 import uuid
 from datetime import datetime
 import socket
+import requests
 
+url = ""
 app = Flask(__name__)
 inventory = []
 loaner = []
@@ -66,6 +68,35 @@ def unpurchased_items():
             count += 1
     return count
 
+def check_loaners():
+    global loaner, url
+    loaner = load_loan()
+    due_list = []
+    today = datetime.today().strftime('%Y-%m-%d')
+    for item in loaner:
+        if item["return_date"] != "done" and item["return_date"] <= today:
+            if item["return_date"] < today:
+                item["return"] = "over"
+            else:
+                item["return"] = "yes"
+            due_list.append(item)
+        elif item["return_date"] > today:
+            item["return"] = "no"
+    save_loan()
+    mess = ''
+    for item in due_list:
+        mess += f'Person\'s Name: {item["loaner_name"]} - Item Loaned: {item["loaned_item"]} - Due on: {item["return_date"]}</pre>'
+    mess += "Please contact them for the device return"
+    payload = {
+        "title": "The following borrowed items are due:",
+        "text": mess
+    }
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    response = requests.post(url, headers=headers, data=json.dumps(payload))
+    print(response.text.encode('utf8'))
+
 @app.route('/')
 def index():
     global inventory, shopping
@@ -91,8 +122,6 @@ def search():
         # Perform search logic
         search_results = []
         for item in inventory:
-            print(search_query.lower(), str(item['item_name']).lower())
-            print(search_query.lower() in str(item['item_name']).lower())
             if (search_query.lower() in str(item['item_name']).lower() and search_query != "") or all(tag in [tag['name'] for tag in item['tags']] for tag in form_tags):
                 search_results.append(item)
 
@@ -181,13 +210,14 @@ def record_loan():
     if request.method == 'POST':
         loaner_name = request.form['loaner_name']
         loaned_item = request.form['loaned_item']
+        return_date = request.form['date_return']
         item = next((item for item in inventory if item['item_name'] == loaned_item), None)
         item['quantity'] -= 1
         print(inventory)
         save_inventory()
         # Save the loan object to loaner.json
         loaner = load_loan()
-        loaner.append({"loaner_name": loaner_name, "date": datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), "loaned_item": loaned_item})
+        loaner.append({"loaner_name": loaner_name, "date": datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), "loaned_item": loaned_item, 'return_date': return_date, "return": "no"})
         save_loan()
         return redirect(url_for('index'))
 
@@ -204,10 +234,9 @@ def record_loan2(item_name):
 @app.route('/loaned')
 def loaned_page():
     global loaner, inventory
+    check_loaners()
     inventory = load_inventory()
     loaner = load_loan()
-    print(inventory)
-    print(loaner)
     return render_template('loaned.html', loaned_items=loaner, items=inventory)
 
 @app.route('/shopping', methods=['GET', 'POST'])
@@ -286,5 +315,6 @@ def delete_shopping():
 
 if __name__ == '__main__':
     hostname=socket.gethostname()   
-    IPAddr=socket.gethostbyname(hostname) 
+    IPAddr=socket.gethostbyname(hostname)
+    print(IPAddr)
     app.run(debug=True,host=f"{IPAddr}")

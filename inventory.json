@@ -1,7 +1,7 @@
 [
     {
         "item_name": "MK270",
-        "quantity": 1,
+        "quantity": 0,
         "link": "NA",
         "picture": "20230524163129_2267252c1061457686a03e64f489c974.jpg",
         "tags": [
@@ -21,7 +21,7 @@
     },
     {
         "item_name": "Keyboard",
-        "quantity": 1,
+        "quantity": 3,
         "link": "NA",
         "picture": "20230524163213_3fa19c1ee0554e979e0f25ecb2300cac.jpg",
         "tags": [
@@ -45,7 +45,7 @@
     },
     {
         "item_name": "Ring-Light",
-        "quantity": 0,
+        "quantity": 3,
         "link": "NA",
         "picture": "20230524163332_00fc1cb5c3d74cdcaf54c7aeae1b1abe.jpg",
         "tags": [
@@ -81,7 +81,7 @@
     },
     {
         "item_name": "RedDragon-KM",
-        "quantity": 1,
+        "quantity": 0,
         "link": "NA",
         "picture": "20230524163537_50c32a7b194f49f7a98610c155f821a3.jpg",
         "tags": [

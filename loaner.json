@@ -2,6 +2,29 @@
     {
         "loaner_name": "Sami ",
         "date": "2023-05-25 @ 22:05:20",
-        "loaned_item": "H390-Headset"
+        "loaned_item": "H390-Headset",
+        "return_date": "2023-05-25",
+        "return": "over"
+    },
+    {
+        "loaner_name": "Jojo",
+        "date": "2023-06-02 @ 12:57:12",
+        "loaned_item": "Keyboard",
+        "return_date": "2023-06-03",
+        "return": "no"
+    },
+    {
+        "loaner_name": "Mo",
+        "date": "2023-06-02 @ 13:06:05",
+        "loaned_item": "MK270",
+        "return_date": "2023-06-02",
+        "return": "yes"
+    },
+    {
+        "loaner_name": "Sami ",
+        "date": "2023-06-02 @ 13:27:07",
+        "loaned_item": "RedDragon-KM",
+        "return_date": "2023-06-05",
+        "return": "no"
     }
 ]

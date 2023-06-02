@@ -17,33 +17,67 @@
 <body>
     <div class="container">
         <h1 class="mt-4 mb-4">Search Results</h1>
-        <h4>Search Query: {{ search_query }}</h4>
-        <h4>Selected Tags:</h4>
-        <div>
-            {% for tag in selected_tags %}
-            <span class="badge text-bg-{{ tag.color }}" style="background-color:{{ tag.color }};">{{ tag.name }}</span>
-            {% endfor %}
+        <h4><a href="/"><i class="bi bi-arrow-left"></i></a></h4>
+        <div class="card col-md-4">
+            <div class="card-body">
+                <h4 class="card-title">Search Query:</h4>
+                <p class="card-text">{{ search_query }}</p>
+                <div>
+                    {% for tag in selected_tags %}
+                    <span class="badge text-bg-{{ tag.color }}" style="background-color:{{ tag.color }};">{{ tag.name
+                        }}</span>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-        <table class="table mt-4">
-            <thead>
-                <tr>
-                    <th>Item Name</th>
-                    <th>Tags</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in results %}
-                <tr>
-                    <td>{{ item.item_name }}</td>
-                    <td>
-                        {% for tag in item.tags %}
-                        <span class="badge text-bg-{{ tag.color }}" style="background-color:{{ tag.color }};">{{ tag.name }}</span>
-                        {% endfor %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <br>
+        <div class="card">
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Preview</th>
+                        <th>Actions</th>
+                        <th>Tags</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in results %}
+                    <tr>
+                        <td>{{ item.item_name }}</td>
+                        <td><img src="{{ url_for('static', filename=item.picture) }}" alt="Preview" height="50"
+                                data-toggle="modal" data-target="#modal2{{ loop.index }}"></td>
+                        <td>
+                            <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button"
+                                class="btn btn-primary">Edit</button>
+                            <button onclick="window.open('{{ item.link }}', '_blank')" type="button"
+                                class="btn btn-info" {% if item.link=="NA" %}disabled{% endif %}>Link</button>
+                            <button onclick="location.href='/record_loan/{{ item.item_name }}'" type="button"
+                                class="btn btn-secondary" {% if item.quantity==0 %}disabled{% endif %}>Loan</button>
+                        </td>
+                        <td>
+                            {% for tag in item.tags %}
+                            <span class="badge text-bg-{{ tag.color }}" style="background-color:{{ tag.color }};">{{
+                                tag.name }}</span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal2{{ loop.index }}" tabindex="-1" role="dialog"
+                        aria-labelledby="modal2{{ loop.index }}Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img class="img-fluid" src="{{ url_for('static', filename=item.picture) }}"
+                                        alt="Preview">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -140,31 +140,27 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" id="floatingInput"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput"><i class="bi bi-search"
-                                                    style="padding: 5px;"></i>Search</label>
+                                        <div class="form-group">
+                                            <label for="search_bar">Key Words</label>
+                                            <input type="text" class="form-control" id="search_bar" name="search_bar">
                                         </div>
                                     </div>
-                                    <div class="dropdown">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                            id="search-tags-dropdown" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                            Add Tags
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="search-tags-dropdown">
+                                    <div class="mt-4">
+                                        <div id="selected_tags"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tags">Tags</label>
+                                        <select class="form-control" id="tags" name="tags[]" multiple>
+                                            <option value="" disabled>Select tags</option>
                                             {% for tag in tags %}
-                                            <a class="dropdown-item search-tag-option" href="#"
-                                                data-tag="{{ tag.name }}" data-color="{{ tag.color }}">{{ tag.name
-                                                }}</a>
+                                            <option value="{{ tag.name }}">{{ tag.name }}</option>
                                             {% endfor %}
-                                        </div>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-danger"><i class="bi bi-trash3"
-                                            style="padding-right: 5px;"></i>Yes</button>
+                                    <button type="submit" class="btn btn-success"><i class="bi bi-search"
+                                            style="padding-right: 5px;"></i>Search</button>
                                 </div>
                             </div>
                         </div>
@@ -211,9 +207,11 @@
                             </div>
                             <br>
                             <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button"
-                                class="btn btn-secondary">Edit</button>
+                                class="btn btn-primary">Edit</button>
                             <button onclick="location.href='{{ item.link }}'" type="button" class="btn btn-info" {% if
                                 item.link=="NA" %}disabled{% endif %}>Link</button>
+                            <button onclick="location.href='/record_loan/{{ item.item_name }}'" type="button"
+                                class="btn btn-secondary" {% if item.quantity==0 %}disabled{% endif %}>Loan</button>
                         </div>
                     </div>
                 </div>
@@ -253,9 +251,12 @@
                                 data-toggle="modal" data-target="#modal2{{ loop.index }}"></td>
                         <td>
                             <button onclick="location.href='/adjust/{{ item.item_name }}'" type="button"
-                                class="btn btn-secondary">Edit</button>
+                                class="btn btn-primary">Edit</button>
                             <button onclick="window.open('{{ item.link }}', '_blank')" type="button"
                                 class="btn btn-info" {% if item.link=="NA" %}disabled{% endif %}>Link</button>
+                            <button onclick="location.href='/record_loan/{{ item.item_name }}'" type="button"
+                                class="btn btn-secondary" {% if item.quantity==0 %}disabled{% endif %}>Loan</button>
+
                         </td>
                         <td>
                             <div class="tags">
@@ -334,70 +335,27 @@
             });
         });*/
         $(document).ready(function () {
-            $('.search-tag-option').click(function (e) {
-                e.preventDefault();
-                var selectedTag = $(this).data('tag');
-                var tagColor = $(this).data('color');
-                var badge = '<span class="badge text-bg-' + tagColor + '" style="background-color:' + tagColor + ';">' + selectedTag + '</span>';
-                $('#selected-tags').append(badge);
-            });
+            var tags = JSON.parse('{{ tags | tojson | safe }}');
 
-            $('#tags').click(function () {
-                $(this).siblings('.dropdown-toggle').dropdown('show');
-            });
+            $('#tags').change(function () {
+                var selectedTags = $(this).val();
+                $('#selected_tags').empty();
 
-            $('#clear-selected-tags').click(function (e) {
-                e.preventDefault();
-                $('#selected-tags').empty();
-            });
+                if (selectedTags) {
+                    for (var i = 0; i < selectedTags.length; i++) {
+                        var tagName = selectedTags[i];
+                        var tag = tags.find(function (t) {
+                            return t.name === tagName;
+                        });
 
-            $('form').submit(function (e) {
-                e.preventDefault();
-                var searchQuery = $('#search-input').val();
-                var selectedTags = [];
-
-                $('#selected-tags .badge').each(function () {
-                    var tag = $(this).text();
-                    selectedTags.push(tag);
-                });
-
-                // Perform AJAX request or update the page with search results based on the searchQuery and selected tags
-                // You can send the searchQuery and selected tags to your Flask backend and retrieve the search results accordingly
-                // Update the page with the search results dynamically
-            });
-
-            // Handle the search form submission
-            $('#search-form').submit(function (event) {
-                event.preventDefault(); // Prevent the default form submission
-
-                // Get the search query and selected tags
-                var searchQuery = $('#search-input').val();
-                var selectedTags = [];
-                $('input[name="selected-tags"]:checked').each(function () {
-                    selectedTags.push($(this).val());
-                });
-
-                // Send an AJAX request to the search route
-                $.ajax({
-                    type: 'POST',
-                    url: '/search',
-                    data: {
-                        'search-query': searchQuery,
-                        'selected-tags': selectedTags
-                    },
-                    success: function (response) {
-                        // Render the search results
-                        $('#search-results').html(response);
-                    },
-                    error: function (error) {
-                        console.log(error);
+                        if (tag) {
+                            var badge = '<span class="badge text-bg-' + tag.color + '" style="background-color:' + tag.color + ';">' + tag.name + '</span>';
+                            $('#selected_tags').append(badge);
+                        }
                     }
-                });
+                }
             });
         });
-
-
-
     </script>
 </body>
 

@@ -79,14 +79,23 @@ def search():
     inventory = load_inventory()
 
     if request.method == 'POST':
-        search_query = request.form.get('search-query')
-        selected_tags = request.form.getlist('selected-tags')
-
+        search_query = request.form['search_bar']
+        form_tags = request.form.getlist('tags[]')
+        
+        selected_tags = []
+        tags = load_config()["tags"]
+        for item in form_tags:
+            for tag in tags:
+                if tag['name'] == item:
+                    selected_tags.append(tag)
         # Perform search logic
         search_results = []
         for item in inventory:
-            if search_query.lower() in item['item_name'].lower() and all(tag in item['tags'] for tag in selected_tags):
+            print(search_query.lower(), str(item['item_name']).lower())
+            print(search_query.lower() in str(item['item_name']).lower())
+            if (search_query.lower() in str(item['item_name']).lower() and search_query != "") or all(tag in [tag['name'] for tag in item['tags']] for tag in form_tags):
                 search_results.append(item)
+
 
         return render_template('search_results.html', search_query=search_query, selected_tags=selected_tags, results=search_results)
 
@@ -184,6 +193,14 @@ def record_loan():
 
     return render_template('record_loan.html', inventory=inventory)
 
+@app.route('/record_loan/<item_name>')
+def record_loan2(item_name):
+    global inventory, loaner
+    inventory = load_inventory()
+    loaner = load_loan()
+    print(item_name)
+    return render_template('record_loan.html', inventory=inventory, item_option=item_name)
+
 @app.route('/loaned')
 def loaned_page():
     global loaner, inventory
@@ -216,6 +233,20 @@ def purchase():
         for item in shopping:
             if item['id'] == itemID:
                 item['purchased'] = "yes"
+                item['date'] = datetime.now().strftime('%Y-%m-%d @ %H:%M:%S')
+                save_shop()
+                break
+        return redirect(url_for('shopping'))
+
+@app.route('/decline_purchase', methods=['POST'])
+def decline_purchase():
+    global shopping
+    shopping = load_shop()
+    if request.method == 'POST':
+        itemID = request.form['item_id']
+        for item in shopping:
+            if item['id'] == itemID:
+                item['purchased'] = "declined"
                 item['date'] = datetime.now().strftime('%Y-%m-%d @ %H:%M:%S')
                 save_shop()
                 break

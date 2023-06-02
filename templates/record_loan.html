@@ -34,7 +34,7 @@
                     <option value="" disabled selected>Select item</option>
                     {% for item in inventory %}
                         {% if item.quantity != 0 %}
-                            <option value="{{ item.item_name }}">{{ item.item_name }}</option>
+                            <option value="{{ item.item_name }}" {% if item.item_name == item_option %} selected="selected" {% endif %}>{{ item.item_name }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>

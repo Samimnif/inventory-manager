@@ -26,5 +26,12 @@
         "loaned_item": "RedDragon-KM",
         "return_date": "2023-06-05",
         "return": "no"
+    },
+    {
+        "loaner_name": "Test1P",
+        "date": "2023-06-02 @ 15:56:34",
+        "loaned_item": "MK120",
+        "return_date": "2023-06-02",
+        "return": "yes"
     }
 ]

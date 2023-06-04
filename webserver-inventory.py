@@ -6,7 +6,8 @@ from datetime import datetime
 import socket
 import requests
 
-url = ""
+url = "https://cmailcarletonca.webhook.office.com/webhookb2/a415d00c-3582-4ea0-bf93-abdfe71fcff7@6ad91895-de06-485e-bc51-fce126cc8530/IncomingWebhook/6e48ee28eff2481ea1f858698987186d/a60094b8-ba28-4db9-a0a0-7a42f06375b6"
+
 app = Flask(__name__)
 inventory = []
 loaner = []
@@ -68,21 +69,10 @@ def unpurchased_items():
             count += 1
     return count
 
-def check_loaners():
-    global loaner, url
-    loaner = load_loan()
-    due_list = []
-    today = datetime.today().strftime('%Y-%m-%d')
-    for item in loaner:
-        if item["return_date"] != "done" and item["return_date"] <= today:
-            if item["return_date"] < today:
-                item["return"] = "over"
-            else:
-                item["return"] = "yes"
-            due_list.append(item)
-        elif item["return_date"] > today:
-            item["return"] = "no"
-    save_loan()
+def notify_loan(due_list):
+    global url
+    if (len(due_list) == 0):
+        return
     mess = ''
     for item in due_list:
         mess += f'Person\'s Name: {item["loaner_name"]} - Item Loaned: {item["loaned_item"]} - Due on: {item["return_date"]}</pre>'
@@ -96,6 +86,23 @@ def check_loaners():
     }
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     print(response.text.encode('utf8'))
+
+def check_loaners():
+    global loaner
+    loaner = load_loan()
+    due_list = []
+    today = datetime.today().strftime('%Y-%m-%d')
+    for item in loaner:
+        if item["return_date"] != "done" and item["return_date"] <= today:
+            if item["return_date"] < today:
+                item["return"] = "over"
+            else:
+                item["return"] = "yes"
+            due_list.append(item)
+        elif item["return_date"] > today:
+            item["return"] = "no"
+    save_loan()
+    return due_list
 
 @app.route('/')
 def index():

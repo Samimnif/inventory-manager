@@ -1,7 +1,7 @@
 [
     {
         "item_name": "MK270",
-        "quantity": 0,
+        "quantity": 4,
         "link": "NA",
         "picture": "20230524163129_2267252c1061457686a03e64f489c974.jpg",
         "tags": [
@@ -21,7 +21,7 @@
     },
     {
         "item_name": "Keyboard",
-        "quantity": 3,
+        "quantity": 2,
         "link": "NA",
         "picture": "20230524163213_3fa19c1ee0554e979e0f25ecb2300cac.jpg",
         "tags": [
@@ -61,7 +61,7 @@
     },
     {
         "item_name": "MK120",
-        "quantity": 0,
+        "quantity": 1,
         "link": "NA",
         "picture": "20230524163442_d1763b42f09149ffb930edc2a8b81ec9.jpg",
         "tags": [

@@ -5,10 +5,12 @@ import uuid
 from datetime import datetime
 import socket
 import requests
+from flask_apscheduler import APScheduler
 
-url = "https://cmailcarletonca.webhook.office.com/webhookb2/a415d00c-3582-4ea0-bf93-abdfe71fcff7@6ad91895-de06-485e-bc51-fce126cc8530/IncomingWebhook/6e48ee28eff2481ea1f858698987186d/a60094b8-ba28-4db9-a0a0-7a42f06375b6"
+url = ""
 
 app = Flask(__name__)
+scheduler = APScheduler()
 inventory = []
 loaner = []
 shopping = []
@@ -93,7 +95,7 @@ def check_loaners():
     due_list = []
     today = datetime.today().strftime('%Y-%m-%d')
     for item in loaner:
-        if item["return_date"] != "done" and item["return_date"] <= today:
+        if item["return"] != "done" and item["return_date"] <= today:
             if item["return_date"] < today:
                 item["return"] = "over"
             else:
@@ -110,6 +112,13 @@ def index():
     inventory = load_inventory()
     shopping = load_shop()
     return render_template('index.html', inventory=inventory, shopItems=unpurchased_items(), tags = load_config()["tags"])
+
+@app.route('/about')
+def about():
+    global inventory, shopping
+    inventory = load_inventory()
+    shopping = load_shop()
+    return render_template('about.html', inventory=inventory, shopItems=unpurchased_items(), tags = load_config()["tags"])
 
 @app.route('/search', methods=['POST'])
 def search():
@@ -220,11 +229,12 @@ def record_loan():
         return_date = request.form['date_return']
         item = next((item for item in inventory if item['item_name'] == loaned_item), None)
         item['quantity'] -= 1
+        unique_id = str(uuid.uuid4().hex)
         print(inventory)
         save_inventory()
         # Save the loan object to loaner.json
         loaner = load_loan()
-        loaner.append({"loaner_name": loaner_name, "date": datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), "loaned_item": loaned_item, 'return_date': return_date, "return": "no"})
+        loaner.append({"loaner_name": loaner_name, "id": unique_id, "date": datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), "loaned_item": loaned_item, 'return_date': return_date, "return": "no"})
         save_loan()
         return redirect(url_for('index'))
 
@@ -245,6 +255,20 @@ def loaned_page():
     inventory = load_inventory()
     loaner = load_loan()
     return render_template('loaned.html', loaned_items=loaner, items=inventory)
+
+@app.route('/return_loan', methods=['POST'])
+def return_loan():
+    global loaner, inventory
+    inventory = load_inventory()
+    loaner = load_loan()
+    if request.method == 'POST':
+        itemID = request.form['item_id']
+        for item in loaner:
+            if item['id'] == itemID:
+                item['return'] = "done"
+                save_loan()
+                break
+        return redirect(url_for('loaned_page'))
 
 @app.route('/shopping', methods=['GET', 'POST'])
 def shopping():
@@ -320,8 +344,13 @@ def delete_shopping():
                 break
         return redirect(url_for('shopping'))
 
+def update_loan():
+    notify_loan(check_loaners())
+
 if __name__ == '__main__':
     hostname=socket.gethostname()   
     IPAddr=socket.gethostbyname(hostname)
     print(IPAddr)
+    #scheduler.add_job(id='check_loaner', func=update_loan, trigger='interval', hours=24)
+    #scheduler.start()
     app.run(debug=True,host=f"{IPAddr}")

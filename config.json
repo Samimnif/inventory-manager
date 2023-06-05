@@ -15,7 +15,7 @@
         {"name": "HDMI Cable", "color": "#D35400"},
         {"name": "Ethernet Cable", "color": "#34495E"},
         {"name": "VGA/DVI Cable", "color": "#DDB539"},
-        {"name": "USB Adapter", "color": "#DD6D39"},
+        {"name": "USB Adapter", "color": "#F49696"},
         {"name": "AC Adapter", "color": "#F142DF"},
         {"name": "USB Cable", "color": "#F14257"},
         {"name": "Speakers", "color": "#217290"}

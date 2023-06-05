@@ -18,6 +18,7 @@
         {"name": "USB Adapter", "color": "#F49696"},
         {"name": "AC Adapter", "color": "#F142DF"},
         {"name": "USB Cable", "color": "#F14257"},
-        {"name": "Speakers", "color": "#217290"}
+        {"name": "Speakers", "color": "#217290"},
+        {"name": "4K", "color": "#8EEB35"}
     ]
 }

@@ -73,7 +73,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('loaned_page') }}"><i class="bi bi-card-list"
-                                style="padding-right: 5px;"></i>Loaned Items</a>
+                                style="padding-right: 5px;"></i>Loaned Items
+                            {% if loanedItems != 0 %}<span class="badge text-bg-warning">{{loanedItems}}</span>{% endif
+                            %}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('shopping') }}"><i class="bi bi-basket"
@@ -173,6 +175,15 @@
 
     <div class="container">
         <h1 class="mt-4 mb-4">Inventory Management</h1>
+        {% for item in inventory %}
+        {% if item.quantity == 0 %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill" style="padding-left: 5px; color: red;"></i> {{item.item_name}} is
+            out of stock
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
         <div class="row">
             <div class="btn-group mb-4" role="group">
                 <button type="button" class="btn btn-outline-primary view-toggle" data-view="grid"><i

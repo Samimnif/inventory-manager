@@ -71,6 +71,16 @@ def unpurchased_items():
             count += 1
     return count
 
+def unreturned_items():
+    global loaner
+    loaner = load_loan()
+    count = 0
+    for item in loaner:
+        if item['return'] != "done":
+            count += 1
+    print(count)
+    return count
+
 def notify_loan(due_list):
     global url
     if (len(due_list) == 0):
@@ -101,7 +111,7 @@ def check_loaners():
             else:
                 item["return"] = "yes"
             due_list.append(item)
-        elif item["return_date"] > today:
+        elif item["return"] != "done" and item["return_date"] > today:
             item["return"] = "no"
     save_loan()
     return due_list
@@ -111,7 +121,7 @@ def index():
     global inventory, shopping
     inventory = load_inventory()
     shopping = load_shop()
-    return render_template('index.html', inventory=inventory, shopItems=unpurchased_items(), tags = load_config()["tags"])
+    return render_template('index.html', inventory=inventory, shopItems=unpurchased_items(), loanedItems=unreturned_items(), tags = load_config()["tags"])
 
 @app.route('/about')
 def about():
@@ -258,15 +268,17 @@ def loaned_page():
 
 @app.route('/return_loan', methods=['POST'])
 def return_loan():
-    global loaner, inventory
-    inventory = load_inventory()
+    global loaner
     loaner = load_loan()
     if request.method == 'POST':
         itemID = request.form['item_id']
         for item in loaner:
             if item['id'] == itemID:
                 item['return'] = "done"
+                print('done')
+                print(item)
                 save_loan()
+                print(loaner)
                 break
         return redirect(url_for('loaned_page'))
 
@@ -290,10 +302,12 @@ def purchase():
     shopping = load_shop()
     if request.method == 'POST':
         itemID = request.form['item_id']
+        oredrID = request.form['order_id']
         for item in shopping:
             if item['id'] == itemID:
                 item['purchased'] = "yes"
                 item['date'] = datetime.now().strftime('%Y-%m-%d @ %H:%M:%S')
+                item['order_id'] = oredrID
                 save_shop()
                 break
         return redirect(url_for('shopping'))

@@ -30,10 +30,6 @@
                 "color": "primary"
             },
             {
-                "name": "\uf8ff Mac",
-                "color": "#243100"
-            },
-            {
                 "name": "Wireless",
                 "color": "#0B5345 "
             },
@@ -61,7 +57,7 @@
     },
     {
         "item_name": "MK120",
-        "quantity": 1,
+        "quantity": 0,
         "link": "NA",
         "picture": "20230524163442_d1763b42f09149ffb930edc2a8b81ec9.jpg",
         "tags": [
@@ -81,7 +77,7 @@
     },
     {
         "item_name": "RedDragon-KM",
-        "quantity": 0,
+        "quantity": 1,
         "link": "NA",
         "picture": "20230524163537_50c32a7b194f49f7a98610c155f821a3.jpg",
         "tags": [

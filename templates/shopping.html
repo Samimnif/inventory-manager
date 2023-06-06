@@ -55,13 +55,17 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Did you purchase <b>{{ item.quantity }}x</b> {{ item.item
-                                                    }}?<br>Link: <a href="{{ item.link }}"><i
+                                                    Confirm purchase <b>{{ item.quantity }}x</b> {{ item.item
+                                                    }}<br>Link: <a href="{{ item.link }}"><i
                                                             class="bi bi-link-45deg"></i></a>
+                                                    <div class="mb-3">
+                                                        <label for="order_id" class="form-label">Order ID/Tracking:</label>
+                                                        <input type="text" class="form-control" id="order_id" name="order_id">
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger"
-                                                        data-bs-dismiss="modal" onclick="declinePurchase('{{ item.id }}')"><i class="bi bi-x-lg"
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                                        onclick="declinePurchase('{{ item.id }}')"><i class="bi bi-x-lg"
                                                             style="padding-right: 5px;"></i>Decline</button>
                                                     <button type="submit" class="btn btn-success"><i
                                                             class="bi bi-check-lg"
@@ -193,11 +197,40 @@
                         <td>
                             <form method="POST" action="{{ url_for('index') }}">
                                 <input type="hidden" name="item_index" value="{{ loop.index }}">
-                                <button type="button" class="btn btn-{% if item.purchased=='yes' %}success{% endif %}{% if item.purchased!='yes' %}danger{% endif %} btn-sm" disabled>{% if item.purchased=='yes' %}<i class="bi bi-check-all"
-                                        style="padding-right: 5px;"></i>Purchased{% endif %}{% if item.purchased!='yes' %}<i class="bi bi-x-square"style="padding-right: 5px;"></i>Declined{% endif %}</button>
+                                <button type="button"
+                                    class="btn btn-{% if item.purchased=='yes' %}success{% endif %}{% if item.purchased!='yes' %}danger{% endif %} btn-sm"
+                                    {% if item.purchased=='yes' %}data-bs-toggle="modal"
+                                    data-bs-target="#order-{{ item.id }}"{% endif %}{% if item.purchased!='yes'%}disabled{% endif %}>{% if item.purchased=='yes' %}<i class="bi bi-check-all"
+                                        style="padding-right: 5px;"></i>Purchased {% endif %}{% if item.purchased!='yes'
+                                    %}<i class="bi bi-x-square" style="padding-right: 5px;"></i>Declined{% endif
+                                    %}</button>
                             </form>
                         </td>
                         <td>{{ item.date }}</td>
+                        {% if item.purchased=='yes' %}
+                        <!-- Modal -->
+                        <div class="modal fade" id="order-{{ item.id }}" tabindex="-1"
+                        aria-labelledby="orderLabel-{{ item.id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="orderLabel-{{ item.id }}">
+                                        Oredr Detail:
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <b>{{ item.quantity }}x</b> {{ item.item }}<br>
+                                    Order ID: <b>{{ item.order_id }}</b>
+                                </div>
+                                <div class="modal-footer">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        {% endif %}
                     </tr>
                     {% endif %}
                     {% endfor %}

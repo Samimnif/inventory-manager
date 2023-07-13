@@ -5,7 +5,7 @@
         "date": "2023-06-05 @ 10:52:39",
         "loaned_item": "MK120",
         "return_date": "2023-06-07",
-        "return": "no"
+        "return": "over"
     },
     {
         "loaner_name": "Mo",
@@ -13,7 +13,7 @@
         "date": "2023-06-05 @ 10:53:00",
         "loaned_item": "Keyboard",
         "return_date": "2023-06-05",
-        "return": "yes"
+        "return": "over"
     },
     {
         "loaner_name": "Jose",

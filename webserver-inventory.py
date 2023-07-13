@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, Response
 import json
 import os
 import uuid
@@ -6,6 +6,7 @@ from datetime import datetime
 import socket
 import requests
 from flask_apscheduler import APScheduler
+from functools import wraps
 
 url = ""
 
@@ -14,6 +15,35 @@ scheduler = APScheduler()
 inventory = []
 loaner = []
 shopping = []
+
+def check_auth(username, password):
+    # Replace this with your authentication logic
+    # Verify if the provided username and password are valid
+    # You can check against a database or any other authentication mechanism
+    return username == 'sprott' and password == 'password'
+
+def authenticate():
+    """Sends a 401 response that enables basic auth"""
+    return Response(
+        'Unauthorized', 
+        401, 
+        {'WWW-Authenticate': 'Basic realm="Login Required"'}
+    )
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if not auth or not check_auth(auth.username, auth.password):
+            return authenticate()
+        return f(*args, **kwargs)
+    return decorated
+
+# Apply the decorator to the routes that require authentication
+@app.before_request
+@requires_auth
+def before_request():
+    pass
 
 def save_shop():
     global shopping
@@ -367,4 +397,4 @@ if __name__ == '__main__':
     print(IPAddr)
     #scheduler.add_job(id='check_loaner', func=update_loan, trigger='interval', hours=24)
     #scheduler.start()
-    app.run(debug=True,host=f"{IPAddr}")
+    app.run(debug=True,port=8000, host='134.117.183.13')

@@ -4,7 +4,7 @@ import os
 import uuid
 from datetime import datetime
 import socket
-import requests
+#import requests
 from flask_apscheduler import APScheduler
 from functools import wraps
 
@@ -392,9 +392,9 @@ def update_loan():
     notify_loan(check_loaners())
 
 if __name__ == '__main__':
-    hostname=socket.gethostname()   
+    '''hostname=socket.gethostname()   
     IPAddr=socket.gethostbyname(hostname)
-    print(IPAddr)
+    print(IPAddr)'''
     #scheduler.add_job(id='check_loaner', func=update_loan, trigger='interval', hours=24)
     #scheduler.start()
-    app.run(debug=True,port=8000, host='134.117.183.13')
+    app.run(debug=True,port=8000)

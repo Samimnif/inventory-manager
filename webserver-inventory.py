@@ -316,15 +316,20 @@ def return_loan():
 def shopping():
     global shopping
     shopping = load_shop()
+    shoppingM = load_shop()
+    for item in shoppingM:
+        item["date"] = datetime.strptime(item["date"], "%Y-%m-%d @ %H:%M:%S")
+    shoppingM.sort(key=lambda x: x["date"], reverse=True)
+
     if request.method == 'POST':
         item = request.form['item']
         unique_id = str(uuid.uuid4().hex)
         link = request.form['link']
         quantity = request.form['quantity']
-        shopping.append({'item': item, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no"})
+        shopping.append({'item': item, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S')})
         save_shop()
         return redirect(url_for('shopping'))
-    return render_template('shopping.html', shopping_list=shopping)
+    return render_template('shopping.html', shopping_list=shoppingM)
 
 @app.route('/purchase', methods=['POST'])
 def purchase():

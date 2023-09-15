@@ -19,7 +19,7 @@
         <h1 class="mt-4 mb-4">Shopping List</h1>
         <h4><a href="/"><i class="bi bi-arrow-left"></i></a></h4>
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-9">
                 <table class="table table-hover caption-top">
                     <caption>Shopping List</caption>
                     <thead>
@@ -27,6 +27,7 @@
                             <th>Item</th>
                             <th>Link</th>
                             <th>Quantity</th>
+                            <th>Tags</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -35,94 +36,131 @@
                         {% if item.purchased == 'no' %}
                         <tr>
                             <td>{{ item.item }}</td>
-                            <td><a href="{{ item.link }}" target="_blank"><i class="bi bi-link-45deg"></i></a></td>
+                            <td>
+                                <h4><a href="{{ item.link }}" target="_blank"><i class="bi bi-link-45deg"></i></a></h4>
+                            </td>
                             <td>{{ item.quantity }}</td>
                             <td>
-                                <form method="POST" action="{{ url_for('purchase') }}" data-item-id="{{ item.id }}">
-                                    <input type="hidden" name="item_id" value="{{ item.id }}">
-                                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#confirmPurchase-{{ item.id }}">Status</button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="confirmPurchase-{{ item.id }}" tabindex="-1"
-                                        aria-labelledby="purchaseLabel-{{ item.id }}" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="purchaseLabel-{{ item.id }}">
-                                                        Confirm Purchase
-                                                    </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Confirm purchase <b>{{ item.quantity }}x</b> {{ item.item
-                                                    }}<br>Link: <a href="{{ item.link }}"><i
-                                                            class="bi bi-link-45deg"></i></a>
-                                                    <div class="mb-3">
-                                                        <label for="order_id" class="form-label">Order
-                                                            ID/Tracking:</label>
-                                                        <input type="text" class="form-control" id="order_id"
-                                                            name="order_id">
+                                <div class="tags">
+                                    {% for tag in item.tags %}
+                                    <span class="badge text-bg-{{ tag.color }}"
+                                        style="background-color: {{ tag.color }};">{{ tag.name }}</span>
+                                    {% endfor %}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <form method="POST" action="{{ url_for('purchase') }}" data-item-id="{{ item.id }}">
+                                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                                        <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#confirmPurchase-{{ item.id }}">Status</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="confirmPurchase-{{ item.id }}" tabindex="-1"
+                                            aria-labelledby="purchaseLabel-{{ item.id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="purchaseLabel-{{ item.id }}">
+                                                            Confirm Purchase
+                                                        </h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                                                        onclick="declinePurchase('{{ item.id }}')"><i class="bi bi-x-lg"
-                                                            style="padding-right: 5px;"></i>Decline</button>
-                                                    <button type="submit" class="btn btn-success"><i
-                                                            class="bi bi-check-lg"
-                                                            style="padding-right: 5px;"></i>Purchased</button>
+                                                    <div class="modal-body">
+                                                        Confirm purchase <b>{{ item.quantity }}x</b> {{ item.item
+                                                        }}<br>Link: <a href="{{ item.link }}"><i
+                                                                class="bi bi-link-45deg"></i></a>
+                                                        <div class="mb-3">
+                                                            <label for="order_id" class="form-label">Order
+                                                                ID/Tracking:</label>
+                                                            <input type="text" class="form-control" id="order_id"
+                                                                name="order_id">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-dismiss="modal"
+                                                            onclick="declinePurchase('{{ item.id }}')"><i
+                                                                class="bi bi-x-lg"
+                                                                style="padding-right: 5px;"></i>Decline</button>
+                                                        <button type="submit" class="btn btn-success"><i
+                                                                class="bi bi-check-lg"
+                                                                style="padding-right: 5px;"></i>Purchased</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
-                                <form method="POST" action="{{ url_for('edit_shopping') }}">
-                                    <input type="hidden" name="item_id" value="{{ item.id }}">
-                                    <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#editPurchase-{{ item.id }}">Edit</button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="editPurchase-{{ item.id }}" tabindex="-1"
-                                        aria-labelledby="editLabel-{{ item.id }}" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="editLabel-{{ item.id }}">
-                                                        Edit Item:
-                                                    </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label for="name">Item Name:</label>
-                                                        <input type="text" class="form-control" id="name" name="name"
-                                                            value="{{item.item}}" required>
+                                    </form>
+                                    <form method="POST" action="{{ url_for('edit_shopping') }}">
+                                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#editPurchase-{{ item.id }}">Edit</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="editPurchase-{{ item.id }}" tabindex="-1"
+                                            aria-labelledby="editLabel-{{ item.id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="editLabel-{{ item.id }}">
+                                                            Edit Item:
+                                                        </h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="link">Merchant Link:</label>
-                                                        <input type="text" class="form-control" id="link" name="link"
-                                                            value="{{item.link}}" required>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label for="name">Item Name:</label>
+                                                            <input type="text" class="form-control" id="name"
+                                                                name="name" value="{{item.item}}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="link">Merchant Link:</label>
+                                                            <input type="text" class="form-control" id="link"
+                                                                name="link" value="{{item.link}}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="quantity">Quantity:</label>
+                                                            <input type="number" class="form-control" id="quantity"
+                                                                name="quantity" value="{{item.quantity}}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="tags">Tags</label>
+                                                            <select class="form-control" id="tags" name="tags[]"
+                                                                multiple>
+                                                                <option value="" disabled>Select tags</option>
+                                                                {% for tag in tags %}
+                                                                <option value="{{ tag.name }}" {% if tag in item.tags%}
+                                                                    selected {% endif %}>{{ tag.name }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                            <div class="mt-4">
+                                                                <div id="selected_tags">
+                                                                    {% for tag in tags %}
+                                                                    {% if tag in item.tags%} <span
+                                                                        class="badge text-bg-{{tag.color}}"
+                                                                        style="background-color:{{tag.color}};">{{
+                                                                        tag.name }}</span> {% endif %}
+                                                                    {% endfor %}
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="quantity">Quantity:</label>
-                                                        <input type="number" class="form-control" id="quantity"
-                                                            name="quantity" value="{{item.quantity}}" required>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#deletePurchase-{{ item.id }}"><i
+                                                                class="bi bi-trash3"
+                                                                style="padding-right: 5px;"></i>Delete</button>
+                                                        <button type="submit" class="btn btn-success"><i
+                                                                class="bi bi-arrow-repeat"
+                                                                style="padding-right: 5px;"></i>Update</button>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                        data-bs-target="#deletePurchase-{{ item.id }}"><i
-                                                            class="bi bi-trash3"
-                                                            style="padding-right: 5px;"></i>Delete</button>
-                                                    <button type="submit" class="btn btn-success"><i
-                                                            class="bi bi-arrow-repeat"
-                                                            style="padding-right: 5px;"></i>Update</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                                 <!-- Modal 2-->
                                 <form method="POST" action="{{ url_for('delete_shopping') }}">
                                     <input type="hidden" name="item_id" value="{{ item.id }}">
@@ -157,7 +195,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-3">
                 <h4>Add Item to Shopping List</h4>
                 <form method="POST" action="{{ url_for('shopping') }}">
                     <div class="form-group">
@@ -172,10 +210,25 @@
                         <label for="quantity">Quantity:</label>
                         <input type="number" class="form-control" id="quantity" name="quantity" required>
                     </div>
+                    <div class="form-group">
+                        <label for="tags2">Tags</label>
+                        <select class="form-control" id="tags2" name="tags2[]" multiple>
+                            <option value="" disabled>Select tags</option>
+                            {% for tag in tags %}
+                            <option value="{{ tag.name }}">{{ tag.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mt-4">
+                        <div id="selected_tags2"></div>
+                    </div>
                     <br>
                     <button type="submit" class="btn btn-primary">Add Item</button>
                 </form>
             </div>
+        </div>
+        <div class="row">
+
         </div>
         <div class="row">
             <table class="table table-hover table-responsive caption-top">
@@ -185,8 +238,10 @@
                         <th>Item</th>
                         <th>Link</th>
                         <th>Quantity</th>
+                        <th>Tags</th>
                         <th>Status</th>
-                        <th>Date of Purchase</th>
+                        <th class="text-nowrap">Date of Purchase <span class="badge text-bg-info"><i class="bi bi-sort-down"></i></span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -194,13 +249,23 @@
                     {% if item.purchased != 'no' %}
                     <tr>
                         <td>{{ item.item }}</td>
-                        <td><a href="{{ item.link }}" target="_blank"><i class="bi bi-link-45deg"></i></a></td>
+                        <td>
+                            <h4><a href="{{ item.link }}" target="_blank"><i class="bi bi-link-45deg"></i></a></h4>
+                        </td>
                         <td>{{ item.quantity }}</td>
+                        <td>
+                            <div class="tags">
+                                {% for tag in item.tags %}
+                                <span class="badge text-bg-{{ tag.color }}"
+                                    style="background-color: {{ tag.color }};">{{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                        </td>
                         <td>
                             <form method="POST" action="{{ url_for('index') }}">
                                 <input type="hidden" name="item_index" value="{{ loop.index }}">
                                 <button type="button"
-                                    class="btn btn-{% if item.purchased=='yes' %}success{% endif %}{% if item.purchased!='yes' %}danger{% endif %} btn-sm"
+                                    class="btn text-nowrap btn-{% if item.purchased=='yes' %}success{% endif %}{% if item.purchased!='yes' %}danger{% endif %} btn-sm"
                                     {% if item.purchased=='yes' %}data-bs-toggle="modal"
                                     data-bs-target="#order-{{ item.id }}" {% endif %}{% if item.purchased!='yes'
                                     %}disabled{% endif %}>{% if item.purchased=='yes' %}<i class="bi bi-check-all"
@@ -254,6 +319,46 @@
         // Submit the form
         form.submit();
     }
+    $(document).ready(function () {
+        var tags = JSON.parse('{{ tags | tojson | safe }}');
+
+        $('#tags').change(function () {
+            var selectedTags = $(this).val();
+            $('#selected_tags').empty();
+
+            if (selectedTags) {
+                for (var i = 0; i < selectedTags.length; i++) {
+                    var tagName = selectedTags[i];
+                    var tag = tags.find(function (t) {
+                        return t.name === tagName;
+                    });
+
+                    if (tag) {
+                        var badge = '<span class="badge text-bg-' + tag.color + '" style="background-color:' + tag.color + ';">' + tag.name + '</span>';
+                        $('#selected_tags').append(badge);
+                    }
+                }
+            }
+        });
+        $('#tags2').change(function () {
+            var selectedTags = $(this).val();
+            $('#selected_tags2').empty();
+
+            if (selectedTags) {
+                for (var i = 0; i < selectedTags.length; i++) {
+                    var tagName = selectedTags[i];
+                    var tag = tags.find(function (t) {
+                        return t.name === tagName;
+                    });
+
+                    if (tag) {
+                        var badge = '<span class="badge text-bg-' + tag.color + '" style="background-color:' + tag.color + ';">' + tag.name + '</span>';
+                        $('#selected_tags2').append(badge);
+                    }
+                }
+            }
+        });
+    });
 </script>
 
 </html>

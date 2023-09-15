@@ -202,7 +202,6 @@ def add_item():
                 if tag['name'] == item:
                     selected_tags.append(tag)
 
-
         if picture.filename:
             unique_filename = generate_unique_filename(picture.filename)
             picture.save('static/' + unique_filename)
@@ -326,10 +325,17 @@ def shopping():
         unique_id = str(uuid.uuid4().hex)
         link = request.form['link']
         quantity = request.form['quantity']
-        shopping.append({'item': item, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S')})
+        selected_tags = []
+        form_tags = request.form.getlist('tags2[]')
+        tags = load_config()["shopping_type"]
+        for i in form_tags:
+            for tag in tags:
+                if tag['name'] == i:
+                    selected_tags.append(tag)
+        shopping.append({'item': item, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags})
         save_shop()
         return redirect(url_for('shopping'))
-    return render_template('shopping.html', shopping_list=shoppingM)
+    return render_template('shopping.html', shopping_list=shoppingM, tags=load_config()["shopping_type"])
 
 @app.route('/purchase', methods=['POST'])
 def purchase():
@@ -370,11 +376,19 @@ def edit_shopping():
         link = request.form['link']
         quantity = request.form['quantity']
         itemID = request.form['item_id']
+        selected_tags = []
+        form_tags = request.form.getlist('tags[]')
+        tags = load_config()["shopping_type"]
+        for i in form_tags:
+            for tag in tags:
+                if tag['name'] == i:
+                    selected_tags.append(tag)
         for item in shopping:
             if item['id'] == itemID:
                 item['item'] = name
                 item['link'] = link
                 item['quantity'] = quantity
+                item['tags'] = selected_tags
                 save_shop()
                 break
         return redirect(url_for('shopping'))

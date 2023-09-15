@@ -4,7 +4,7 @@
         {"name": "Mouse", "color": "secondary"},
         {"name": "Mouse Pad", "color": "#CCCCFF"},
         {"name": "Headset", "color": "success"},
-        {"name": " Mac", "color": "#243100"},
+        {"name": "Apple Mac", "color": "#243100"},
         {"name": "Wired", "color": "danger"},
         {"name": "Wireless", "color": "#0B5345 "},
         {"name": "Bluetooth", "color": "#0004FF "},
@@ -20,5 +20,10 @@
         {"name": "USB Cable", "color": "#F14257"},
         {"name": "Speakers", "color": "#217290"},
         {"name": "4K", "color": "#8EEB35"}
+    ],
+    "shopping_type": [
+        {"name": "Review", "color": "primary"},
+        {"name": "Archive", "color": "secondary"},
+        {"name": "Usual", "color": "success"}
     ]
 }

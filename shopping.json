@@ -4,7 +4,7 @@
         "link": "https://www.amazon.ca/Japanese-Assortment-Excellent-Delicious-Selection/dp/B08P7NCCT9/?_encoding=UTF8&pd_rd_w=5O6Jz&content-id=amzn1.sym.ba8581f3-7044-404a-934b-4b4f21271994&pf_rd_p=ba8581f3-7044-404a-934b-4b4f21271994&pf_rd_r=JBHXHQJ6EMB9WVQFJPC0&pd_rd_wg=1lAYU&pd_rd_r=fd8152b6-7dbe-4a16-b2f9-21d826c3e7d3&ref_=pd_gw_trq_ed_qc5z7jkn",
         "quantity": "5",
         "id": "3ba2982d5c1e4efcb54b5fd0bea15500",
-        "purchased": "yes",
+        "purchased": "no",
         "date": "2023-08-31 @ 13:24:04",
         "order_id": ""
     },
@@ -13,7 +13,7 @@
         "link": "https://www.amazon.ca/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech+h390+headset&qid=1670953192&s=electronics&sprefix=logi+h390+headset%2Celectronics%2C70&sr=1-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
         "quantity": "5",
         "id": "cde044a5139d4281a9312bf95b1da9ed",
-        "purchased": "yes",
+        "purchased": "no",
         "date": "2023-08-31 @ 13:24:09",
         "order_id": ""
     },
@@ -32,6 +32,58 @@
         "id": "51b931acf9b84706b3e9952ce02dc436",
         "purchased": "yes",
         "date": "2023-08-31 @ 13:44:11",
+        "order_id": ""
+    },
+    {
+        "item": "Logitech H390 Wired Headset for PC/Laptop, Stereo Headphones with Noise Cancelling Microphone, USB-A, In-Line Controls, Works with Chromebook - Black",
+        "link": "https://www.amazon.cal/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech+h390+headset&qid=1670953192&s=electronics&sprefix=logi+h390+headset%2Celectronics%2C70&sr=1-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
+        "quantity": "23",
+        "id": "1f6650e58cd64476abf254eebe331e53",
+        "purchased": "yes",
+        "date": "2023-09-14 @ 22:31:23",
+        "tags": [
+            {
+                "name": "Review",
+                "color": "primary"
+            },
+            {
+                "name": "Archive",
+                "color": "secondary"
+            },
+            {
+                "name": "Usual",
+                "color": "success"
+            }
+        ],
+        "order_id": ""
+    },
+    {
+        "item": "Logitech H390 Wired Headset for PC/Laptop, Stereo Headphones with Noise Cancelling Microphone, USB-A, In-Line Controls, Works with Chromebook - Black",
+        "link": "https://www.amazon.ca/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech%2Bh390%2Bheadset&qid=1670953192&s=electronics&sprefix=logi%2Bh390%2Bheadset%2Celectronics%2C70&sr=1-2-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU&th=1",
+        "quantity": "2",
+        "id": "e8a2ee17dbb04a29a0ad88f667130d8d",
+        "purchased": "no",
+        "date": "2023-09-14 @ 22:25:05",
+        "tags": [
+            {
+                "name": "Review",
+                "color": "primary"
+            }
+        ]
+    },
+    {
+        "item": "Japanese Snacks Assortment 30pcs \"TONO SNACK\" Excellent Variety and Delicious Selection of Japanese Dagashi",
+        "link": "https://www.amazon.cal/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech+h390+headset&qid=1670953192&s=electronics&sprefix=logi+h390+headset%2Celectronics%2C70&sr=1-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
+        "quantity": "23",
+        "id": "2dabfefe19ef4c3199449942becd9ef6",
+        "purchased": "yes",
+        "date": "2023-09-14 @ 22:55:54",
+        "tags": [
+            {
+                "name": "Archive",
+                "color": "secondary"
+            }
+        ],
         "order_id": ""
     }
 ]

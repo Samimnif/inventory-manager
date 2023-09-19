@@ -22,8 +22,15 @@
         {"name": "4K", "color": "#8EEB35"}
     ],
     "shopping_type": [
+        {"name": "Urgent", "color": "#BF4342"},
         {"name": "Review", "color": "primary"},
         {"name": "Archive", "color": "secondary"},
-        {"name": "Usual", "color": "success"}
+        {"name": "Usual", "color": "success"},
+        {"name": "Admin", "color": "#B3679B"},
+        {"name": "Consultants", "color": "#EDD83D"},
+        {"name": "Faculty", "color": "#4F518C"},
+        {"name": "Staff", "color": "#FF5400"},
+        {"name": "Deal", "color": "#00B2CA"}
+        
     ]
 }

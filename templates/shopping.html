@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-9">
                 <table class="table table-hover caption-top">
-                    <caption>Shopping List</caption>
+                    <caption><b>Shopping List</b></caption>
                     <thead>
                         <tr>
                             <th>Item</th>
@@ -76,6 +76,11 @@
                                                             <input type="text" class="form-control" id="order_id"
                                                                 name="order_id">
                                                         </div>
+                                                        <div class="mb-3">
+                                                            <label for="notes_id" class="form-label">Notes:</label>
+                                                            <textarea  type="text" rows="2" class="form-control" id="notes_id"
+                                                                name="notes_id"></textarea>
+                                                        </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-danger"
@@ -83,6 +88,11 @@
                                                             onclick="declinePurchase('{{ item.id }}')"><i
                                                                 class="bi bi-x-lg"
                                                                 style="padding-right: 5px;"></i>Decline</button>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal"
+                                                            onclick="archivePurchase('{{ item.id }}')"><i
+                                                                class="bi bi-archive"
+                                                                style="padding-right: 5px;"></i>Archive</button>
                                                         <button type="submit" class="btn btn-success"><i
                                                                 class="bi bi-check-lg"
                                                                 style="padding-right: 5px;"></i>Purchased</button>
@@ -93,7 +103,7 @@
                                     </form>
                                     <form method="POST" action="{{ url_for('edit_shopping') }}">
                                         <input type="hidden" name="item_id" value="{{ item.id }}">
-                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#editPurchase-{{ item.id }}">Edit</button>
                                         <!-- Modal -->
                                         <div class="modal fade" id="editPurchase-{{ item.id }}" tabindex="-1"
@@ -223,16 +233,72 @@
                         <div id="selected_tags2"></div>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Add Item</button>
+                    <div class="row justify-content-between">
+                        <div class="col-5">
+                            <button type="submit" class="btn btn-primary">Add Item</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-secondary" name="archive" value="true">Archive</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
+        <br>
         <div class="row">
-
+            <hr class="border border-primary border-1 opacity-10">
+            <table class="table table-hover table-responsive caption-top">
+                <caption><b>Review/Archive</b></caption>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Link</th>
+                        <th>Quantity</th>
+                        <th>Tags</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in shopping_list %}
+                    {% if item.purchased == 'archive'%}
+                    <tr>
+                        <td>{{ item.item }}</td>
+                        <td>
+                            <h4><a href="{{ item.link }}" target="_blank"><i class="bi bi-link-45deg"></i></a></h4>
+                        </td>
+                        <td>{{ item.quantity }}</td>
+                        <td>
+                            <div class="tags">
+                                {% for tag in item.tags %}
+                                <span class="badge text-bg-{{ tag.color }}"
+                                    style="background-color: {{ tag.color }};">{{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <form method="POST" action="{{ url_for('move_shopping') }}">
+                                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                                    <button type="submit" class="btn btn-warning btn-sm text-nowrap"><i
+                                            class="bi bi-bag-plus-fill" style="padding-right: 5px;"></i>To Shop</button>
+                                </form>
+                                <form method="POST" action="{{ url_for('delete_shopping') }}">
+                                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                                    <button type="submit" class="btn btn-danger btn-sm text-nowrap"><i
+                                            class="bi bi-trash3" style="padding-right: 5px;"></i>Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <hr class="border border-primary border-1 opacity-10">
         </div>
         <div class="row">
             <table class="table table-hover table-responsive caption-top">
-                <caption>Purchase History</caption>
+                <caption><b>Purchase History</b></caption>
                 <thead>
                     <tr>
                         <th>Item</th>
@@ -240,13 +306,14 @@
                         <th>Quantity</th>
                         <th>Tags</th>
                         <th>Status</th>
-                        <th class="text-nowrap">Date of Purchase <span class="badge text-bg-info"><i class="bi bi-sort-down"></i></span>
+                        <th class="text-nowrap">Date of Purchase <span class="badge text-bg-info"><i
+                                    class="bi bi-sort-down"></i></span>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in shopping_list %}
-                    {% if item.purchased != 'no' %}
+                    {% if item.purchased != 'no' and item.purchased != 'archive'%}
                     <tr>
                         <td>{{ item.item }}</td>
                         <td>
@@ -268,7 +335,7 @@
                                     class="btn text-nowrap btn-{% if item.purchased=='yes' %}success{% endif %}{% if item.purchased!='yes' %}danger{% endif %} btn-sm"
                                     {% if item.purchased=='yes' %}data-bs-toggle="modal"
                                     data-bs-target="#order-{{ item.id }}" {% endif %}{% if item.purchased!='yes'
-                                    %}disabled{% endif %}>{% if item.purchased=='yes' %}<i class="bi bi-check-all"
+                                    %}data-bs-toggle="modal" data-bs-target="#Decline-{{ item.id }}" {% endif %}>{% if item.purchased=='yes' %}<i class="bi bi-check-all"
                                         style="padding-right: 5px;"></i>Purchased {% endif %}{% if item.purchased!='yes'
                                     %}<i class="bi bi-x-square" style="padding-right: 5px;"></i>Declined{% endif
                                     %}</button>
@@ -290,7 +357,34 @@
                                     </div>
                                     <div class="modal-body">
                                         <b>{{ item.quantity }}x</b> {{ item.item }}<br>
-                                        Order ID: <b>{{ item.order_id }}</b>
+                                        <hr>
+                                        <h5>Order ID:</h5>{{ item.order_id }}
+                                        <h5>Notes:</h5>{{ item.note }}
+                                    </div>
+                                    <div class="modal-footer">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if item.purchased=='declined' %}
+                        <!-- Modal -->
+                        <div class="modal fade" id="Decline-{{ item.id }}" tabindex="-1"
+                            aria-labelledby="DeclineLabel-{{ item.id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="DeclineLabel-{{ item.id }}">
+                                            Declined Item:
+                                        </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <b>{{ item.quantity }}x</b> {{ item.item }}<br>
+                                        <hr>
+                                        <h5>Notes/reasons:</h5>{{ item.note }}
                                     </div>
                                     <div class="modal-footer">
 
@@ -315,6 +409,16 @@
 
         // Set the action URL to the Flask route for declining the purchase
         form.action = "{{ url_for('decline_purchase') }}";
+
+        // Submit the form
+        form.submit();
+    }
+    function archivePurchase(itemId) {
+        // Find the form element with the corresponding item ID
+        const form = document.querySelector(`form[data-item-id="${itemId}"]`);
+
+        // Set the action URL to the Flask route for declining the purchase
+        form.action = "{{ url_for('archive_purchase') }}";
 
         // Submit the form
         form.submit();

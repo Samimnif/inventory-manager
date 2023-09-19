@@ -30,6 +30,18 @@
                 {% endfor %}
             </div>
         </div>
+        <br>
+        <div class="row">
+            <div class="col-md-7">
+
+            </div>
+            <div class="col-md-3">
+                <h5>Avavilable Shopping tags</h5>
+                {% for tag in tags2 %}
+                <span class="badge text-bg-{{tag.color}}" style="background-color:{{tag.color}};">{{tag.name}}</span>
+                {% endfor %}
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 </body>

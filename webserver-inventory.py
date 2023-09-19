@@ -158,7 +158,7 @@ def about():
     global inventory, shopping
     inventory = load_inventory()
     shopping = load_shop()
-    return render_template('about.html', inventory=inventory, shopItems=unpurchased_items(), tags = load_config()["tags"])
+    return render_template('about.html', inventory=inventory, shopItems=unpurchased_items(), tags = load_config()["tags"], tags2 = load_config()["shopping_type"])
 
 @app.route('/search', methods=['POST'])
 def search():
@@ -332,7 +332,10 @@ def shopping():
             for tag in tags:
                 if tag['name'] == i:
                     selected_tags.append(tag)
-        shopping.append({'item': item, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags})
+        if 'archive' in request.form:
+            shopping.append({'item': item, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "archive", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags})
+        else:
+            shopping.append({'item': item, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags})
         save_shop()
         return redirect(url_for('shopping'))
     return render_template('shopping.html', shopping_list=shoppingM, tags=load_config()["shopping_type"])
@@ -344,11 +347,13 @@ def purchase():
     if request.method == 'POST':
         itemID = request.form['item_id']
         oredrID = request.form['order_id']
+        noteItem = request.form['notes_id']
         for item in shopping:
             if item['id'] == itemID:
                 item['purchased'] = "yes"
                 item['date'] = datetime.now().strftime('%Y-%m-%d @ %H:%M:%S')
                 item['order_id'] = oredrID
+                item['note'] = noteItem
                 save_shop()
                 break
         return redirect(url_for('shopping'))
@@ -359,10 +364,25 @@ def decline_purchase():
     shopping = load_shop()
     if request.method == 'POST':
         itemID = request.form['item_id']
+        noteItem = request.form['notes_id']
         for item in shopping:
             if item['id'] == itemID:
                 item['purchased'] = "declined"
                 item['date'] = datetime.now().strftime('%Y-%m-%d @ %H:%M:%S')
+                item['note'] = noteItem
+                save_shop()
+                break
+        return redirect(url_for('shopping'))
+
+@app.route('/archive_purchase', methods=['POST'])
+def archive_purchase():
+    global shopping
+    shopping = load_shop()
+    if request.method == 'POST':
+        itemID = request.form['item_id']
+        for item in shopping:
+            if item['id'] == itemID:
+                item['purchased'] = "archive"
                 save_shop()
                 break
         return redirect(url_for('shopping'))
@@ -401,11 +421,23 @@ def delete_shopping():
         itemID = request.form['item_id']
         for item in shopping.copy():
             if item['id'] == itemID:
-                print('found')
                 shopping.remove(item)
                 save_shop()
                 break
-        return redirect(url_for('shopping'))
+    return redirect(url_for('shopping'))
+
+@app.route('/move_shopping', methods=['POST'])
+def move_shopping():
+    global shopping
+    shopping = load_shop()
+    if request.method == 'POST':
+        itemID = request.form['item_id']
+        for item in shopping.copy():
+            if item['id'] == itemID:
+                item['purchased'] = 'no'
+                save_shop()
+                break
+    return redirect(url_for('shopping'))
 
 def update_loan():
     notify_loan(check_loaners())

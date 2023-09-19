@@ -178,10 +178,41 @@
         {% for item in inventory %}
         {% if item.quantity == 0 %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <i class="bi bi-exclamation-triangle-fill" style="padding-left: 5px; color: red;"></i> {{item.item_name}} is
-            out of stock
+            <h4 class="alert-heading"><i class="bi bi-exclamation-triangle-fill"
+                    style="padding-left: 5px; color: red;"></i> {{item.item_name}} is
+                out of stock</h4>
+            <!--<hr>
+            {% if item.link!="NA" %}
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                data-bs-target="#addShop{{item.item_name}}">Add to Shopping List</button>
+            {% endif %}
+            {% if item.link=="NA" %}<p>Link is not provided, please manually add it to shopping list</p>{% endif %}-->
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+        <!-- Modal -->
+        <!--<div class="modal fade" id="addShop{{item.item_name}}" tabindex="-1"
+            aria-labelledby="addShop{{item.item_name}}label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="orderLabel-{{ item.id }}">
+                            Add to Shopping List:
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="POST" action="{{ url_for('shopping') }}">
+                        <div class="modal-body">
+                            <input type="text" class="form-control" id="item" name="item" required>
+                            <input type="text" class="form-control" id="link" name="link" required>
+                            <input type="number" class="form-control" id="quantity" name="quantity" required>
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>-->
         {% endif %}
         {% endfor %}
         <div class="row">

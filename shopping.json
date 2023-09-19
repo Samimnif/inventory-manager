@@ -4,7 +4,7 @@
         "link": "https://www.amazon.ca/Japanese-Assortment-Excellent-Delicious-Selection/dp/B08P7NCCT9/?_encoding=UTF8&pd_rd_w=5O6Jz&content-id=amzn1.sym.ba8581f3-7044-404a-934b-4b4f21271994&pf_rd_p=ba8581f3-7044-404a-934b-4b4f21271994&pf_rd_r=JBHXHQJ6EMB9WVQFJPC0&pd_rd_wg=1lAYU&pd_rd_r=fd8152b6-7dbe-4a16-b2f9-21d826c3e7d3&ref_=pd_gw_trq_ed_qc5z7jkn",
         "quantity": "5",
         "id": "3ba2982d5c1e4efcb54b5fd0bea15500",
-        "purchased": "no",
+        "purchased": "archive",
         "date": "2023-08-31 @ 13:24:04",
         "order_id": ""
     },
@@ -13,9 +13,23 @@
         "link": "https://www.amazon.ca/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech+h390+headset&qid=1670953192&s=electronics&sprefix=logi+h390+headset%2Celectronics%2C70&sr=1-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
         "quantity": "5",
         "id": "cde044a5139d4281a9312bf95b1da9ed",
-        "purchased": "no",
+        "purchased": "archive",
         "date": "2023-08-31 @ 13:24:09",
-        "order_id": ""
+        "order_id": "",
+        "tags": [
+            {
+                "name": "Review",
+                "color": "primary"
+            },
+            {
+                "name": "Archive",
+                "color": "secondary"
+            },
+            {
+                "name": "Usual",
+                "color": "success"
+            }
+        ]
     },
     {
         "item": "Norton 360 - 2023 Ready Antivirus software ",
@@ -62,14 +76,16 @@
         "link": "https://www.amazon.ca/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech%2Bh390%2Bheadset&qid=1670953192&s=electronics&sprefix=logi%2Bh390%2Bheadset%2Celectronics%2C70&sr=1-2-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU&th=1",
         "quantity": "2",
         "id": "e8a2ee17dbb04a29a0ad88f667130d8d",
-        "purchased": "no",
-        "date": "2023-09-14 @ 22:25:05",
+        "purchased": "yes",
+        "date": "2023-09-18 @ 23:10:55",
         "tags": [
             {
                 "name": "Review",
                 "color": "primary"
             }
-        ]
+        ],
+        "order_id": "1112225654",
+        "note": "This is a test note to check if it appears correctly"
     },
     {
         "item": "Japanese Snacks Assortment 30pcs \"TONO SNACK\" Excellent Variety and Delicious Selection of Japanese Dagashi",
@@ -85,5 +101,27 @@
             }
         ],
         "order_id": ""
+    },
+    {
+        "item": "test",
+        "link": "https://www.amazon.ca/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech%2Bh390%2Bheadset&qid=1670953192&s=electronics&sprefix=logi%2Bh390%2Bheadset%2Celectronics%2C70&sr=1-2-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU&th=1",
+        "quantity": "23",
+        "id": "2a6e224faa6e494b8f12f83da40211f2",
+        "purchased": "declined",
+        "date": "2023-09-15 @ 21:35:44",
+        "tags": [
+            {
+                "name": "Review",
+                "color": "primary"
+            },
+            {
+                "name": "Archive",
+                "color": "secondary"
+            },
+            {
+                "name": "Usual",
+                "color": "success"
+            }
+        ]
     }
 ]

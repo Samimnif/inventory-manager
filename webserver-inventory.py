@@ -297,16 +297,20 @@ def loaned_page():
 
 @app.route('/return_loan', methods=['POST'])
 def return_loan():
-    global loaner
+    global loaner, inventory
     loaner = load_loan()
+    inventory = load_inventory()
     if request.method == 'POST':
         itemID = request.form['item_id']
         for item in loaner:
             if item['id'] == itemID:
                 item['return'] = "done"
+                i = next((i for i in inventory if i['item_name'] == item['loaned_item']), None)
+                i['quantity'] += 1
                 print('done')
                 print(item)
                 save_loan()
+                save_inventory()
                 print(loaner)
                 break
         return redirect(url_for('loaned_page'))
@@ -322,6 +326,7 @@ def shopping():
 
     if request.method == 'POST':
         item = request.form['item']
+        customer = request.form['customer']
         unique_id = str(uuid.uuid4().hex)
         link = request.form['link']
         quantity = request.form['quantity']
@@ -333,9 +338,9 @@ def shopping():
                 if tag['name'] == i:
                     selected_tags.append(tag)
         if 'archive' in request.form:
-            shopping.append({'item': item, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "archive", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags})
+            shopping.append({'item': item, 'customer': customer, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "archive", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags})
         else:
-            shopping.append({'item': item, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags})
+            shopping.append({'item': item, 'customer': customer, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags})
         save_shop()
         return redirect(url_for('shopping'))
     return render_template('shopping.html', shopping_list=shoppingM, tags=load_config()["shopping_type"])
@@ -393,6 +398,7 @@ def edit_shopping():
     shopping = load_shop()
     if request.method == 'POST':
         name = request.form['name']
+        customer = request.form['customer']
         link = request.form['link']
         quantity = request.form['quantity']
         itemID = request.form['item_id']
@@ -406,6 +412,7 @@ def edit_shopping():
         for item in shopping:
             if item['id'] == itemID:
                 item['item'] = name
+                item['customer'] = customer
                 item['link'] = link
                 item['quantity'] = quantity
                 item['tags'] = selected_tags

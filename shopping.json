@@ -1,114 +1,268 @@
 [
     {
-        "item": "F Japanese Snacks Assortment",
-        "link": "https://www.amazon.ca/Japanese-Assortment-Excellent-Delicious-Selection/dp/B08P7NCCT9/?_encoding=UTF8&pd_rd_w=5O6Jz&content-id=amzn1.sym.ba8581f3-7044-404a-934b-4b4f21271994&pf_rd_p=ba8581f3-7044-404a-934b-4b4f21271994&pf_rd_r=JBHXHQJ6EMB9WVQFJPC0&pd_rd_wg=1lAYU&pd_rd_r=fd8152b6-7dbe-4a16-b2f9-21d826c3e7d3&ref_=pd_gw_trq_ed_qc5z7jkn",
-        "quantity": "5",
-        "id": "3ba2982d5c1e4efcb54b5fd0bea15500",
-        "purchased": "archive",
-        "date": "2023-08-31 @ 13:24:04",
+        "item": "Grommet Tool Kit, 1/2 Inch (12.7mm)",
+        "link": "https://www.amazon.ca/Grommet-Eyelets-Washers-Grommets-Portable/dp/B0C27KQ6B3/ref=sr_1_6?keywords=grommet%2Btool%2Bkit&qid=1686341631&sprefix=grom%2Caps%2C139&sr=8-6&th=1",
+        "quantity": "1",
+        "id": "5c6c67a5e27b4d83a45fe2bd470f5bde",
+        "purchased": "declined",
+        "date": "2023-06-21 @ 15:38:29"
+    },
+    {
+        "item": "Caliper",
+        "link": "https://www.amazon.ca/Stainless-Micrometer-Measuring-Precision-Measurements/dp/B074HZ8S21/ref=sr_1_9?crid=3VX2JHGNXY54Y&keywords=caliper+tool&qid=1686342903&sprefix=caliper+tool%2Caps%2C101&sr=8-9",
+        "quantity": "1",
+        "id": "3867279fb61841f7b9086599bb1ea280",
+        "purchased": "yes",
+        "date": "2023-06-21 @ 15:39:31",
         "order_id": ""
     },
     {
-        "item": "Logitech H390 Wired Headset",
-        "link": "https://www.amazon.ca/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech+h390+headset&qid=1670953192&s=electronics&sprefix=logi+h390+headset%2Celectronics%2C70&sr=1-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
-        "quantity": "5",
-        "id": "cde044a5139d4281a9312bf95b1da9ed",
-        "purchased": "archive",
-        "date": "2023-08-31 @ 13:24:09",
-        "order_id": "",
-        "tags": [
-            {
-                "name": "Review",
-                "color": "primary"
-            },
-            {
-                "name": "Archive",
-                "color": "secondary"
-            },
-            {
-                "name": "Usual",
-                "color": "success"
-            }
-        ]
+        "item": "XEROX C235 COLOUR MF PRINTER ",
+        "link": "https://cdw.narvar.com/CDWCA/tracking/UPSN?tracking_numbers=1Z502478DL13828595&order_number=NLCV111",
+        "quantity": "1",
+        "id": "e36fc31d86854c179a4db9cacac58955",
+        "purchased": "yes",
+        "date": "2023-06-23 @ 13:09:02",
+        "order_id": "1Z502478DL13828595 "
     },
     {
-        "item": "Norton 360 - 2023 Ready Antivirus software ",
-        "link": "https://www.amazon.ca/Norton-360-2021-Antivirus-Subscription/dp/B09NS9XYRM/?_encoding=UTF8&_ref=dlx_gate_sd_dcl_tlt_54cb3e72_dt&pd_rd_w=5pMiW&content-id=amzn1.sym.6d21227a-59db-4b0b-9218-408a56e7173e&pf_rd_p=6d21227a-59db-4b0b-9218-408a56e7173e&pf_rd_r=58DVRZNN5TM7PX10NNQS&pd_rd_wg=rhMwK&pd_rd_r=29370b3c-c0e5-4f9d-ade0-5859d22c950f&ref_=pd_gw_unk",
-        "quantity": "3",
-        "id": "83ff733654e34d268e0a94ed42c229c3",
-        "purchased": "declined",
-        "date": "2023-06-02 @ 09:47:30"
-    },
-    {
-        "item": "newd",
-        "link": "https://carleton.ca/its/contact/",
+        "item": "Toner for\u00a0the\u00a0Xerox\u00a0C235 (for Shibu P.) - please buy each colour (~$163 each)",
+        "link": "https://www.shop.xerox.ca/en/c235-config",
         "quantity": "4",
-        "id": "51b931acf9b84706b3e9952ce02dc436",
+        "id": "57424b39a1f348d5b6a8670054b80f2d",
         "purchased": "yes",
-        "date": "2023-08-31 @ 13:44:11",
+        "date": "2023-06-23 @ 18:30:42",
         "order_id": ""
     },
     {
-        "item": "Logitech H390 Wired Headset for PC/Laptop, Stereo Headphones with Noise Cancelling Microphone, USB-A, In-Line Controls, Works with Chromebook - Black",
-        "link": "https://www.amazon.cal/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech+h390+headset&qid=1670953192&s=electronics&sprefix=logi+h390+headset%2Celectronics%2C70&sr=1-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
-        "quantity": "23",
-        "id": "1f6650e58cd64476abf254eebe331e53",
+        "item": "Samsung Galaxy Tab S8+ Cover Case and KB for Andrew W.",
+        "link": "https://www.amazon.ca/Wineecy-Keyboard-Backlight-Magnetic-Detachable/dp/B09CDD2YCF/ref=sr_1_2_sspa?keywords=samsung+galaxy+tab+s8%2B+keyboard+case&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1",
+        "quantity": "1",
+        "id": "a24a2513d7a948b1819204510bf8bab9",
         "purchased": "yes",
-        "date": "2023-09-14 @ 22:31:23",
-        "tags": [
-            {
-                "name": "Review",
-                "color": "primary"
-            },
-            {
-                "name": "Archive",
-                "color": "secondary"
-            },
-            {
-                "name": "Usual",
-                "color": "success"
-            }
-        ],
+        "date": "2023-06-28 @ 17:46:43",
         "order_id": ""
     },
     {
-        "item": "Logitech H390 Wired Headset for PC/Laptop, Stereo Headphones with Noise Cancelling Microphone, USB-A, In-Line Controls, Works with Chromebook - Black",
-        "link": "https://www.amazon.ca/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech%2Bh390%2Bheadset&qid=1670953192&s=electronics&sprefix=logi%2Bh390%2Bheadset%2Celectronics%2C70&sr=1-2-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU&th=1",
-        "quantity": "2",
-        "id": "e8a2ee17dbb04a29a0ad88f667130d8d",
+        "item": "12-pack Blue Fine Needle -Tip (0.5) Pen ",
+        "link": "https://www.amazon.ca/Pentel-Energel-Retractable-Liquid-Roller/dp/B0057EIAL0/ref=sr_1_6?keywords=fine+tip+needle+point+blue+pen&sr=8-6",
+        "quantity": "1",
+        "id": "d5d52e64073749838062c7de33ca9a28",
         "purchased": "yes",
-        "date": "2023-09-18 @ 23:10:55",
-        "tags": [
-            {
-                "name": "Review",
-                "color": "primary"
-            }
-        ],
-        "order_id": "1112225654",
-        "note": "This is a test note to check if it appears correctly"
-    },
-    {
-        "item": "Japanese Snacks Assortment 30pcs \"TONO SNACK\" Excellent Variety and Delicious Selection of Japanese Dagashi",
-        "link": "https://www.amazon.cal/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech+h390+headset&qid=1670953192&s=electronics&sprefix=logi+h390+headset%2Celectronics%2C70&sr=1-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
-        "quantity": "23",
-        "id": "2dabfefe19ef4c3199449942becd9ef6",
-        "purchased": "yes",
-        "date": "2023-09-14 @ 22:55:54",
-        "tags": [
-            {
-                "name": "Archive",
-                "color": "secondary"
-            }
-        ],
+        "date": "2023-07-07 @ 17:13:34",
         "order_id": ""
     },
     {
-        "item": "test",
-        "link": "https://www.amazon.ca/Logitech-ClearChat-Comfort-Headset-981-000014/dp/B000UXZQ42/ref=sr_1_2_sspa?crid=P9JBQZUZKMG&keywords=logitech%2Bh390%2Bheadset&qid=1670953192&s=electronics&sprefix=logi%2Bh390%2Bheadset%2Celectronics%2C70&sr=1-2-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyV0E0RFMxR0lNNU5PJmVuY3J5cHRlZElkPUEwMzE4MTk4MjYxM1NWRzhMNThRTiZlbmNyeXB0ZWRBZElkPUEwMjYyNjYxMzRQMUY5SDhVQlJTTyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU&th=1",
-        "quantity": "23",
-        "id": "2a6e224faa6e494b8f12f83da40211f2",
+        "item": "ExpertBook for BEKH",
+        "link": "you have the link",
+        "quantity": "1",
+        "id": "2943439f32724bd88749e6480484d826",
+        "purchased": "yes",
+        "date": "2023-07-06 @ 18:05:44",
+        "order_id": ""
+    },
+    {
+        "item": "Multimeter Probes Replacement",
+        "link": "https://www.amazon.ca/Multimeter-Leads-Precision-Accessories-Professional/dp/B0BX6MZHXD/ref=sr_1_7?crid=1QCQ7H9O62WHB&keywords=multimeter+cables&qid=1688666311&sprefix=multimeter+cables%2Caps%2C92&sr=8-7",
+        "quantity": "1",
+        "id": "1f1a4e701f8744ebb69b501971ea2cd9",
+        "purchased": "yes",
+        "date": "2023-07-07 @ 17:13:38",
+        "order_id": ""
+    },
+    {
+        "item": "Zenbook 15 OLED for Emily G. (CUASA)",
+        "link": "https://www.memoryexpress.com/Products/MX00125133",
+        "quantity": "1",
+        "id": "d59426ac0aee4bbcacb10a07b5239f92",
         "purchased": "declined",
-        "date": "2023-09-15 @ 21:35:44",
+        "date": "2023-07-07 @ 17:12:39"
+    },
+    {
+        "item": "Anker Docks",
+        "link": "dfsdfsadgf",
+        "quantity": "5",
+        "id": "3bd3d6c5519e44f5803ee47497a052e1",
+        "purchased": "yes",
+        "date": "2023-07-12 @ 21:57:32",
+        "order_id": ""
+    },
+    {
+        "item": "Protective Case for Ian's Surface 4 Laptop (This is his own link)",
+        "link": "https://www.amazon.ca/mCover-15-inch-Microsoft-Computer-Released/dp/B081L7VJZY/ref=sr_1_5?crid=1DLXHK338L2K6&keywords=plastic+shell+case+to+protect+ms+surface+4&qid=1689716923&sprefix=plastic+shell+case+to+protect+ms+surface+4%2Caps%2C91&sr=8-5",
+        "quantity": "1",
+        "id": "38cfad269c2c495581d20fc340e2f5a7",
+        "purchased": "yes",
+        "date": "2023-07-31 @ 13:40:20",
+        "order_id": ""
+    },
+    {
+        "item": "45W Laptop Charger for Asus Vivobook, Zenbook",
+        "link": "https://www.amazon.ca/Laptop-Charger-Vivobook-Notebook-Adapter/dp/B0B6RC3B63/ref=sr_1_1?crid=2KSQK85FEIKCO&keywords=Laptop%2BCharger%2B45W%2B19V%2B2.37A%2BPower%2BSupply%2BAC%2BAdapter%2Bfor%2BZenbook%2BUX21A%2BUX31A%2BUX461UN%2BUX461UA%2BUX461U%2BUX461&qid=1690299865&sprefix=laptop%2Bcharger%2B45w%2B19v%2B2%2B37a%2Bpower%2Bsupply%2Bac%2Badapter%2Bfor%2Bzenbook%2Bux21a%2Bux31a%2Bux461un%2Bux461ua%2Bux461u%2Bux461%2Caps%2C79&sr=8-1&th=1",
+        "quantity": "3",
+        "id": "ab30dd6b1a464959b224ae80174cffb7",
+        "purchased": "yes",
+        "date": "2023-08-16 @ 14:37:46",
+        "order_id": "Got 2, not 3"
+    },
+    {
+        "item": "Chromecast (Test for Robin)",
+        "link": "https://www.amazon.ca/Chromecast-Google-TV-Streaming-Entertainment/dp/B0BCN4FXD5/ref=sr_1_5?crid=1ETIYPSTCQUCQ&keywords=chromecast&qid=1690485994&sprefix=chromecast%2Caps%2C124&sr=8-5&th=1",
+        "quantity": "1",
+        "id": "2c70a1b7a84045c1b2bc9afb7a6f6c61",
+        "purchased": "yes",
+        "date": "2023-08-16 @ 14:37:15",
+        "order_id": ""
+    },
+    {
+        "item": "27\" Dell Curved Monitor for Nusa F.",
+        "link": "https://www.dell.com/en-ca/shop/dell-27-curved-gaming-monitor-s2721hgf/apd/210-axgw/monitors-monitor-accessories#techspecs_section",
+        "quantity": "1",
+        "id": "7618987d266d4d09920d40a8793cd708",
+        "purchased": "yes",
+        "date": "2023-08-16 @ 14:51:45",
+        "order_id": ""
+    },
+    {
+        "item": "Ring Light",
+        "link": "https://www.amazon.ca/Foscomax-Conference-3000-7500k-Streaming-Conferencing/dp/B08TWVHV6K/ref=sr_1_11?keywords=ring+light&sr=8-11",
+        "quantity": "3",
+        "id": "b87272c63d4d456796778982f3f3365d",
+        "purchased": "yes",
+        "date": "2023-08-18 @ 14:06:56",
+        "order_id": ""
+    },
+    {
+        "item": "27\" Dell Curved Monitor for Naomi F.",
+        "link": "https://www.dell.com/en-ca/shop/dell-27-curved-gaming-monitor-s2721hgf/apd/210-axgw/monitors-monitor-accessories#techspecs_section",
+        "quantity": "1",
+        "id": "da749830fdee4627b10bb8dd02d6a629",
+        "purchased": "yes",
+        "date": "2023-08-18 @ 16:13:36",
+        "order_id": ""
+    },
+    {
+        "item": "Logitech MK825 Wireless KB restock (ON SALE at $67)",
+        "link": "https://www.amazon.ca/Logitech-MK825-Wireless-Keyboard-Mouse/dp/B08436BST3/ref=sr_1_1?keywords=logitech+MK825&s=electronics&sr=1-1",
+        "quantity": "3",
+        "id": "85c645df667940eb9dc27f354335a419",
+        "purchased": "yes",
+        "date": "2023-08-18 @ 14:07:02",
+        "order_id": ""
+    },
+    {
+        "item": "Bose QuietComfort Earbuds II for Qi D. (Eclipse Grey)",
+        "link": "https://www.bestbuy.ca/en-ca/product/bose-quietcomfort-earbuds-ii-in-ear-noise-cancelling-truly-wireless-headphones-eclipse-grey/16704794",
+        "quantity": "1",
+        "id": "948593333f7e47f2824462147e1be287",
+        "purchased": "yes",
+        "date": "2023-08-18 @ 15:15:22",
+        "order_id": ""
+    },
+    {
+        "item": "Footrest for Roya (Nikki Approved)",
+        "link": "https://www.amazon.ca/Adjustable-Under-Desk-Footrest-Circulation/dp/B07L3RVF7C/ref=sr_1_5?keywords=footrest&sr=8-5",
+        "quantity": "1",
+        "id": "47cdf26f3d2140489adefd54ad2d532c",
+        "purchased": "yes",
+        "date": "2023-08-23 @ 17:36:08",
+        "order_id": ""
+    },
+    {
+        "item": "Apple Magic Track Pad (BLACK) for Jasdeep B.",
+        "link": "https://www.apple.com/ca/shop/product/MMMP3AM/A/magic-trackpad-black-multi-touch-surface?fnode=28fdc4068fb69d2f8020e305298547f39026b9a15ebc7cda194ab90c453d68add40691dbf1be5fcd795b92a760e7523e61d81cfa83323e2e8f3416de64ee08df0150b1fa18a7ed28f9513a472c120f913f383350e1ee95bf8e86e63eaacabacf4d83cb075f56174101eed00a7cf4119a",
+        "quantity": "1",
+        "id": "55a937f02f19413c8fc6ba82bbd71fd4",
+        "purchased": "yes",
+        "date": "2023-08-29 @ 16:34:38",
+        "order_id": ""
+    },
+    {
+        "item": "Apple Magic Keyboard (BLACK) w/ Numeric Pad and Touch ID for Jasdeep B.",
+        "link": "https://www.apple.com/ca/shop/product/MMMR3LL/A/magic-keyboard-with-touch-id-and-numeric-keypad-for-mac-models-with-apple-silicon-us-english-black-keys?fnode=28fdc4068fb69d2f8020e305298547f39026b9a15ebc7cda194ab90c453d68add40691dbf1be5fcd795b92a760e7523e61d81cfa83323e2e8f3416de64ee08df0150b1fa18a7ed28f9513a472c120f913f383350e1ee95bf8e86e63eaacabacf4d83cb075f56174101eed00a7cf4119a",
+        "quantity": "1",
+        "id": "4960e40b31544db2b7d3b28f52768215",
+        "purchased": "yes",
+        "date": "2023-08-29 @ 16:35:13",
+        "order_id": "Order No. W1240560609"
+    },
+    {
+        "item": "Ergonomic Keyboard w/ Trackball mouse for Nikki M. (HURRY, 2 LEFT IN STOCK)",
+        "link": "https://www.amazon.ca/Adesso-WKB-3500UB-Ergonomic-Built-Compatible/dp/B00DN7DMWK/ref=sr_1_3?keywords=ergonomic%2Bkeyboard%2Bwith%2Btrackball&s=electronics&sr=1-3&th=1",
+        "quantity": "1",
+        "id": "ebedbcd5bc334c84a988876933c16bba",
+        "purchased": "yes",
+        "date": "2023-08-29 @ 16:58:55",
+        "order_id": "Amazon.ca order #702-9244481-3990633"
+    },
+    {
+        "item": "2x 27\" Dell Curved Monitors for Tony B. (TIM)",
+        "link": "https://www.dell.com/en-ca/shop/dell-27-curved-gaming-monitor-s2721hgf/apd/210-axgw/monitors-monitor-accessories#techspecs_section",
+        "quantity": "2",
+        "id": "1c7344189d674123b0666e86805afff9",
+        "purchased": "yes",
+        "date": "2023-08-30 @ 16:10:56",
+        "order_id": "Order number: 739109153"
+    },
+    {
+        "item": "Laptop Stand for Tony B. (ON SALE 50% off @$39.99)",
+        "link": "https://www.amazon.ca/Nulaxy-Ergonomic-Convertor-Adjustable-Compatible/dp/B081V4B45F/ref=sr_1_1?keywords=Nulaxy%2BLaptop%2BStand%2BAdjustable%2C%2BErgonomic%2BStanding%2BLaptop%2BHolder%2Bfor%2BDesk%2C%2BLaptop%2BRiser%2BHeight%2Bfrom%2B2.1%22%2Bto%2B21%22%2C%2BSupports%2Bup%2Bto%2B22lbs%2C%2BCompatible%2Bwith%2BMacBook%2C%2BAll%2BLaptops%2BTablets%2B10-17%22%2B(Grey)&sr=8-1&th=1",
+        "quantity": "1",
+        "id": "03183ed8e9fb484f87c81579219a70e7",
+        "purchased": "yes",
+        "date": "2023-08-30 @ 16:13:31",
+        "order_id": "ORDER # 701-0215445-2685020"
+    },
+    {
+        "item": "8GB RAM (SODIMMs) 1x for Naomi F. (3 left in stock)",
+        "link": "https://www.memoryexpress.com/Products/MX00117549",
+        "quantity": "1",
+        "id": "3b25265fddbc4d499983275a775d9c23",
+        "purchased": "yes",
+        "date": "2023-08-30 @ 16:17:38",
+        "order_id": "order number is IPU-1011162."
+    },
+    {
+        "item": "Mini Mouse Pad Restock (on sale %25 off)",
+        "link": "https://www.amazon.ca/AmazonBasics-SBD86WD-Gaming-Mouse-Pad/dp/B06X6H2WF7/ref=sr_1_1_sspa?keywords=amazon%2Bbasics%2Bmouse%2Bpad&sr=8-1-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzTzVYTEZUUlBSSFFZJmVuY3J5cHRlZElkPUEwMzI0NTQyM09XVjQzUzJGN05VRCZlbmNyeXB0ZWRBZElkPUEwNjI0NzM2MlJQTDEzU0E0RUtaRiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU&th=1",
+        "quantity": "3",
+        "id": "4c8e98b0befe40c8a4d4b38501fdc903",
+        "purchased": "yes",
+        "date": "2023-09-05 @ 14:17:53",
+        "order_id": "ORDER # 701-3302461-4960205"
+    },
+    {
+        "item": "Anker Mouse (Refurbished) for Steph L.",
+        "link": "https://www.amazon.ca/Anker-Wireless-Vertical-Ergonomic-Optical/dp/B081GKCTCH/ref=sr_1_3?keywords=anker+ergonomic+mouse&sr=8-3",
+        "quantity": "1",
+        "id": "f1cc5c563d0a4c9c83aca0907bf780e0",
+        "purchased": "declined",
+        "date": "2023-09-05 @ 14:27:23"
+    },
+    {
+        "item": "Logitech ERGO K860 Keyboard for Steph L. (refurbished one from last week sold out, back to original price.)",
+        "link": "https://www.amazon.ca/Logitech-Wireless-Ergonomic-Keyboard-Wrist/dp/B07ZWK2TQT/ref=sr_1_1?keywords=Logitech%2BERGO%2BK860&s=electronics&sr=1-1&th=1",
+        "quantity": "1",
+        "id": "568dca5fb92e434db1eddf2131c8f248",
+        "purchased": "declined",
+        "date": "2023-09-05 @ 14:24:00"
+    },
+    {
+        "item": "New Lenovo ThinkPad Laptop Charger 65W watt USB Type C",
+        "link": "https://www.amazon.ca/Lenovo-ThinkPad-Charger-Adapter-ADLX65YDC2A/dp/B07QH7PVN9/ref=sr_1_2?crid=3RHF3FEODHPFP&keywords=Lenovo+AC_ADAPTOR+Type-C+65W+2P+Black&qid=1693939390&sprefix=lenovo+ac_adaptor+type-c+65w+2p+black%2Caps%2C101&sr=8-2",
+        "quantity": "1",
+        "id": "7a234ffa92914cb8aef845199c456da8",
+        "purchased": "yes",
+        "date": "2023-09-06 @ 14:01:07",
+        "order_id": "Ordered 3 of these.  ORDER # 701-0071188-8275426"
+    },
+    {
+        "item": "Echo 20 Thunderbolt 4 SuperDock",
+        "link": "https://www.sonnetstore.com/products/echo20-thunderbolt4-superdock",
+        "quantity": "1",
+        "id": "bbdfc767e457413a9e44e655aae5b4ac",
+        "purchased": "archive",
+        "date": "2023-09-06 @ 14:01:07",
         "tags": [
             {
                 "name": "Review",
@@ -117,11 +271,372 @@
             {
                 "name": "Archive",
                 "color": "secondary"
-            },
-            {
-                "name": "Usual",
-                "color": "success"
             }
         ]
+    },
+    {
+        "item": "ORICO Type-C Hub with M.2 NVMe SSD Enclosure, 9 in 1 USB-C Docking Station with PD Charging",
+        "link": "https://www.amazon.ca/Enclosure-Docking-Station-Charging-Ethernet/dp/B09PDCGPMS?th=1",
+        "quantity": "1",
+        "id": "572a0fba354a44be975198c2ed48d4fe",
+        "purchased": "archive",
+        "date": "2023-09-06 @ 14:01:07",
+        "tags": [
+            {
+                "name": "Review",
+                "color": "primary"
+            },
+            {
+                "name": "Archive",
+                "color": "secondary"
+            }
+        ]
+    },
+    {
+        "item": "Docking Station Triple Display USB-C Docking Station Dual Monitor Adapter Laptop Hub USB C to 2 HDMI 4K (Leanne K.)",
+        "link": "https://www.amazon.ca/Docking-Station-Display-Ethernet-Thunderbolt/dp/B07QJFWQJT?ref_=Oct_d_obs_d_677241011_4&pd_rd_w=dDUWN&content-id=amzn1.sym.40917b72-b081-4fdc-8cb3-d4969de74102&pf_rd_p=40917b72-b081-4fdc-8cb3-d4969de74102&pf_rd_r=YA3NNYVK8ENS7JMXPABK&pd_rd_wg=gEyeL&pd_rd_r=3da938ba-8fcc-4503-8391-e473582caf94&pd_rd_i=B07QJFWQJT&th=1",
+        "quantity": "1",
+        "id": "8baf91cce6e94133a6c6338cffb5033a",
+        "purchased": "yes",
+        "date": "2023-09-06 @ 14:04:37",
+        "order_id": "Ordered 2 (also one for Jennifer Gordon/PPD - ORDER # 701-0804483-4785864"
+    },
+    {
+        "item": "KINGSLONG KLM Series 15.6\" Laptop Sleeve with Handle, Black (Nishta's Laptop)",
+        "link": "https://www.canadacomputers.com/product_info.php?cPath=1246_4549&item_id=101485",
+        "quantity": "1",
+        "id": "4940b9a9715c4875920eb1f6c2efb67a",
+        "purchased": "yes",
+        "date": "2023-09-08 @ 14:29:40",
+        "order_id": ""
+    },
+    {
+        "item": "2x 27\" Dell Curved Monitors for Jennifer G.",
+        "link": "https://www.dell.com/en-ca/shop/dell-27-curved-gaming-monitor-s2721hgf/apd/210-axgw/monitors-monitor-accessories#techspecs_section",
+        "quantity": "2",
+        "id": "45cf630a8bb64fe0a72c0124e1a68947",
+        "purchased": "yes",
+        "date": "2023-09-08 @ 14:33:34",
+        "order_id": "Dell Purchase ID: 2008236460292 Order Date: 09/08/2023"
+    },
+    {
+        "item": "Laptop Stand for Jennifer G. (ON SALE 50% off @$39.99)",
+        "link": "https://www.amazon.ca/Nulaxy-Ergonomic-Convertor-Adjustable-Compatible/dp/B081V4B45F/ref=sr_1_1?keywords=Nulaxy%2BLaptop%2BStand%2BAdjustable%2C%2BErgonomic%2BStanding%2BLaptop%2BHolder%2Bfor%2BDesk%2C%2BLaptop%2BRiser%2BHeight%2Bfrom%2B2.1%22%2Bto%2B21%22%2C%2BSupports%2Bup%2Bto%2B22lbs%2C%2BCompatible%2Bwith%2BMacBook%2C%2BAll%2BLaptops%2BTablets%2B10-17%22%2B(Grey)&sr=8-1&th=1",
+        "quantity": "1",
+        "id": "c384e17fc6d04364acb5cda4e234d657",
+        "purchased": "yes",
+        "date": "2023-09-07 @ 17:16:42",
+        "order_id": "ORDER # 702-2926414-0865813"
+    },
+    {
+        "item": "Docking Station (Spare)",
+        "link": "https://www.amazon.ca/Docking-Station-Display-Ethernet-Thunderbolt/dp/B07QJFWQJT?ref_=Oct_d_obs_d_677241011_4&content-id=amzn1.sym.40917b72-b081-4fdc-8cb3-d4969de74102&pd_rd_i=B07QJFWQJT&th=1",
+        "quantity": "1",
+        "id": "2d58eddfc3a947419072595d0f95f65d",
+        "purchased": "yes",
+        "date": "2023-09-07 @ 17:18:22",
+        "order_id": "ORDER # 702-4143338-4148229"
+    },
+    {
+        "item": "65W AC Adapter USB-C PD 3.0 Adapter",
+        "link": "https://www.memoryexpress.com/Products/MX00125370",
+        "quantity": "1",
+        "id": "03cf2e0564f74f01a2ca77fe642f22aa",
+        "purchased": "yes",
+        "date": "2023-09-15 @ 17:37:50",
+        "order_id": "Order# 702-4205030-9952262"
+    },
+    {
+        "item": "Anker USB C Charger, Anker GaNPrime 65W (Don't forget the $10 Coupon)",
+        "link": "https://www.amazon.ca/Anker-Charger-GaNPrime-Compact-Foldable/dp/B09W2JP6SM/ref=sr_1_4?crid=11PAHH4IK6WIM&keywords=anker+65w&qid=1694463576&sprefix=anker+65w%2Caps%2C138&sr=8-4",
+        "quantity": "1",
+        "id": "bcf40dc06e3c4076a767c9ab68c8f95f",
+        "purchased": "yes",
+        "date": "2023-09-15 @ 17:38:00",
+        "order_id": "Order# 702-4205030-9952262"
+    },
+    {
+        "item": "USB C Cable, Anker 2 Pack",
+        "link": "https://www.amazon.ca/Anker-MacBook-Galaxy-Switch-Chargers/dp/B088NRLMPV/ref=sr_1_3?crid=TC8ANZ8Q37KY&keywords=usb%2Bc%2Bto%2Bc%2Bcable%2Banker&qid=1694463162&refinements=p_36%3A-1500&rnid=12035759011&sprefix=usb%2Bc%2Bto%2Bc%2Bcable%2Banke%2Caps%2C137&sr=8-3&th=1",
+        "quantity": "1",
+        "id": "ecfdd47ccd9346d0ad61ff85bfdad4ed",
+        "purchased": "yes",
+        "date": "2023-09-15 @ 17:38:12",
+        "order_id": "Order# 702-4205030-9952262"
+    },
+    {
+        "item": "(Review first): SC01 Miracast Dongle, 4k, No Wi-Fi needed to connect",
+        "link": "https://proscreencast.com/products/sc01-wireless-display-receiver-adapter",
+        "quantity": "1",
+        "id": "59baae455bd64c7ebce480c7c163d138",
+        "purchased": "archive",
+        "date": "2023-09-06 @ 14:01:07",
+        "tags": [
+            {
+                "name": "Review",
+                "color": "primary"
+            }
+        ]
+    },
+    {
+        "item": "3x Ring Light Restock (1x for Jennifer G.)",
+        "link": "https://www.amazon.ca/Foscomax-Conference-3000-7500k-Streaming-Conferencing/dp/B08TWVHV6K/ref=sr_1_11?keywords=ring+light&sr=8-11",
+        "quantity": "3",
+        "id": "13db211591a7449bab43e3b1c6eae01d",
+        "purchased": "yes",
+        "date": "2023-09-15 @ 17:39:21",
+        "order_id": "Order# 702-4205030-9952262"
+    },
+    {
+        "item": "Dell UltraSharp 27 4K USB-C Hub Monitor - For SHAOBO J.",
+        "link": "https://www.dell.com/en-ca/shop/dell-ultrasharp-27-4k-usb-c-hub-monitor-u2723qe/apd/210-bdpf/monitors-monitor-accessories",
+        "quantity": "2",
+        "id": "d9e2fc9bfb9449eebdf9790e29e94fcc",
+        "purchased": "declined",
+        "date": "2023-10-02 @ 21:15:29",
+        "tags": [
+            {
+                "name": "Review",
+                "color": "primary"
+            },
+            {
+                "name": "Faculty",
+                "color": "#4F518C"
+            }
+        ],
+        "note": ""
+    },
+    {
+        "item": "Curved Monitor with ThunderboltTM 3 For IAN",
+        "link": "https://www.samsung.com/ca/monitors/ultra-wide/thunderbolt-tm-3-curved-monitor-with-21-9-wide-screen-34-inch-lc34j791wtnxza/",
+        "quantity": "1",
+        "id": "0fb6d26947434d489d58455a2d26cb49",
+        "purchased": "yes",
+        "date": "2023-09-21 @ 14:59:37",
+        "tags": [
+            {
+                "name": "Review",
+                "color": "primary"
+            },
+            {
+                "name": "Faculty",
+                "color": "#4F518C"
+            }
+        ],
+        "order_id": "ORDER # 702-4923846-5469011",
+        "note": "comes with a webcam separately ordereds."
+    },
+    {
+        "item": "Logitech C920x HD Pro Webcam, Full HD 1080p/30fps For IAN",
+        "link": "https://www.amazon.ca/Logitech-C920x-Pro-HD-Webcam/dp/B085TFF7M1/ref=sr_1_5?crid=27I74VNASLF94&keywords=web%2Bcamera&qid=1695142146&s=electronics&sprefix=web%2Bcamedra%2Celectronics%2C75&sr=1-5&th=1",
+        "quantity": "1",
+        "id": "7a349e0eeff9413796c5c1b02ac40d64",
+        "purchased": "yes",
+        "date": "2023-09-21 @ 15:00:05",
+        "tags": [
+            {
+                "name": "Review",
+                "color": "primary"
+            },
+            {
+                "name": "Faculty",
+                "color": "#4F518C"
+            }
+        ],
+        "order_id": "ORDER # 702-4923846-5469011",
+        "note": ""
+    },
+    {
+        "item": "ASUS Zenbook 15 OLED (UM3504)",
+        "link": "ASUS ",
+        "quantity": "2",
+        "id": "a35002f88ea944ad8d29c9aef1192ff3",
+        "purchased": "yes",
+        "date": "2023-09-27 @ 20:26:55",
+        "tags": [
+            {
+                "name": "Urgent",
+                "color": "#BF4342"
+            }
+        ],
+        "order_id": "Order Number : 16000024762.",
+        "note": "1x Nadine\r\n1x Emily Mantha"
+    },
+    {
+        "item": "HUAWEI Mateview GT 34\" Ultrawide 3K Curved Gaming",
+        "link": "https://www.canadacomputers.com/product_info.php?cPath=22_700_1429&item_id=243609",
+        "quantity": "1",
+        "id": "f56a5f86fddd4a09ab3c60238c5e3a14",
+        "purchased": "archive",
+        "date": "2023-09-29 @ 16:57:06",
+        "tags": [
+            {
+                "name": "Review",
+                "color": "primary"
+            },
+            {
+                "name": "Deal",
+                "color": "#00B2CA"
+            }
+        ]
+    },
+    {
+        "item": "ASUS TUF Gaming B760M-PLUS WiFi Intel",
+        "link": "https://www.amazon.ca/dp/B0BZTB87BY?ascsubtag=651c5fe5ad4097110ba0093a&tag=52421_iceleadscom0a-20&linkCode=osi&th=1&psc=1",
+        "quantity": "1",
+        "id": "e521da079a894689a77a1993b1f9fccf",
+        "purchased": "no",
+        "date": "2023-10-06 @ 15:10:24",
+        "tags": [
+            {
+                "name": "Urgent",
+                "color": "#BF4342"
+            },
+            {
+                "name": "Review",
+                "color": "primary"
+            }
+        ]
+    },
+    {
+        "item": "Tripod Ring light for Jinsun B. (on sale for $16)",
+        "link": "https://www.amazon.ca/UBeesize-Ringlight-YouTube-Photography-Compatible/dp/B07QB5FNL9/ref=sr_1_3_sspa?keywords=tripod%2Bring%2Blight%2Bsmall&s=electronics&sr=1-3-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1",
+        "quantity": "1",
+        "id": "3a55b1bf2ec442068745eb8de82a316c",
+        "purchased": "no",
+        "date": "2023-10-18 @ 13:44:17",
+        "tags": [
+            {
+                "name": "Faculty",
+                "color": "#4F518C"
+            },
+            {
+                "name": "Deal",
+                "color": "#00B2CA"
+            }
+        ]
+    },
+    {
+        "item": "ASUS TUF Gaming B760M-PLUS WiFi Intel: $239.99 (Amazon) for Rebecca",
+        "link": "https://www.amazon.ca/dp/B0BZTB87BY?ascsubtag=651c5fe5ad4097110ba0093a&tag=52421_iceleadscom0a-20&linkCode=osi&th=1&psc=1",
+        "quantity": "1",
+        "id": "29d3f4f5a02a440583f70ad7ed385c1a",
+        "purchased": "archive",
+        "date": "2023-10-18 @ 16:57:42",
+        "tags": [
+            {
+                "name": "Faculty",
+                "color": "#4F518C"
+            }
+        ],
+        "customer": "Rebecca"
+    },
+    {
+        "item": "i5-13500 Processor: $319.99 (Memory Express) for Rebecca",
+        "link": "https://www.memoryexpress.com/Products/MX00123957",
+        "quantity": "1",
+        "id": "ac85c67d688048719c0eebfb02d9ac2b",
+        "purchased": "no",
+        "date": "2023-10-18 @ 16:58:09",
+        "tags": [
+            {
+                "name": "Faculty",
+                "color": "#4F518C"
+            },
+            {
+                "name": "Deal",
+                "color": "#00B2CA"
+            }
+        ]
+    },
+    {
+        "item": "990 PRO PCIe 4.0 NVMe SSD, 1TB: $119.99 (Memory Express) for Rebecca",
+        "link": "https://www.memoryexpress.com/Products/MX00123889",
+        "quantity": "1",
+        "id": "8b82c92f3b724a80a9efbf930bb39fa0",
+        "purchased": "no",
+        "date": "2023-10-18 @ 16:58:37",
+        "tags": [
+            {
+                "name": "Faculty",
+                "color": "#4F518C"
+            },
+            {
+                "name": "Deal",
+                "color": "#00B2CA"
+            }
+        ]
+    },
+    {
+        "item": "KINGSTON FURY Beast 32GB (2x16GB) DDR5 5600MHz: $149.99 (Canada Computers) for Rebecca",
+        "link": "https://www.canadacomputers.com/product_info.php?cPath=24_311&item_id=227145",
+        "quantity": "1",
+        "id": "d3cb4f7a184242419b9d994252b0fa33",
+        "purchased": "no",
+        "date": "2023-10-18 @ 16:59:00",
+        "tags": [
+            {
+                "name": "Faculty",
+                "color": "#4F518C"
+            }
+        ]
+    },
+    {
+        "item": "InWinCE052 SFF mATX Case w/ 300W Power Supply: $104.99 (Memory Express) for Rebecca",
+        "link": "https://www.memoryexpress.com/Products/MX59307",
+        "quantity": "1",
+        "id": "ee5665dea2594b1fa2c39ddddda4ac85",
+        "purchased": "no",
+        "date": "2023-10-18 @ 16:59:27",
+        "tags": [
+            {
+                "name": "Urgent",
+                "color": "#BF4342"
+            },
+            {
+                "name": "Review",
+                "color": "primary"
+            },
+            {
+                "name": "Archive",
+                "color": "secondary"
+            }
+        ]
+    },
+    {
+        "item": "Docking Station for MBA (as per Courtenay B.'s request) ON SALE $55.99 ",
+        "link": "https://www.amazon.ca/Docking-Station-Display-Ethernet-Thunderbolt/dp/B07QJFWQJT?ref_=Oct_d_obs_d_677241011_4&pd_rd_w=dDUWN&content-id=amzn1.sym.40917b72-b081-4fdc-8cb3-d4969de74102&pf_rd_p=40917b72-b081-4fdc-8cb3-d4969de74102&pf_rd_r=YA3NNYVK8ENS7JMXPABK&pd_rd_wg=gEyeL&pd_rd_r=3da938ba-8fcc-4503-8391-e473582caf94&pd_rd_i=B07QJFWQJT&th=1",
+        "quantity": "10",
+        "id": "7c539903f4c44c90930e2347a344b753",
+        "purchased": "no",
+        "date": "2023-10-23 @ 11:36:54",
+        "tags": [
+            {
+                "name": "Urgent",
+                "color": "#BF4342"
+            },
+            {
+                "name": "Deal",
+                "color": "#00B2CA"
+            }
+        ],
+        "customer": "Ahmed"
+    },
+    {
+        "item": "Docking Station for MBA (as per Courtenay B.'s request) ON SALE $55.99",
+        "customer": "Ahmed",
+        "link": "https://www.canadacomputers.com/product_info.php?cPath=1035_357&item_id=174363",
+        "quantity": "1",
+        "id": "820743f7b54f4cc2b83388e06cc7ce07",
+        "purchased": "yes",
+        "date": "2023-10-26 @ 10:50:34",
+        "tags": [
+            {
+                "name": "Admin",
+                "color": "#B3679B"
+            }
+        ],
+        "order_id": "1234567890",
+        "note": "For his Laptop"
     }
 ]

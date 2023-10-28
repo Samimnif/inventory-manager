@@ -37,8 +37,9 @@
                         {% for item in shopping_list %}
                         {% if item.purchased == 'no' %}
                         <tr 
-                        {% if 'Deal' in item.tags|map(attribute='name') %}class="table-primary"{% endif %}
-                        {% if 'Urgent' in item.tags|map(attribute='name') %}class="table-danger"{% endif %}>
+                        {% if 'Urgent' in item.tags|map(attribute='name') and 'Deal' in item.tags|map(attribute='name') %} style="background-color:#c8b6ff;"
+                        {% elif 'Deal' in item.tags|map(attribute='name') %}class="table-primary"
+                        {% elif 'Urgent' in item.tags|map(attribute='name') %}class="table-danger"{% endif %}>
                             <td>{{ item.item }}</td>
                             <td>{{ item.customer }}</td>
                             <td>
@@ -276,8 +277,10 @@
                 <tbody>
                     {% for item in shopping_list %}
                     {% if item.purchased == 'archive'%}
-                    <tr {% if 'Deal' in item.tags|map(attribute='name') %}class="table-primary"{% endif %}
-                    {% if 'Urgent' in item.tags|map(attribute='name') %}class="table-danger"{% endif %}>
+                    <tr 
+                    {% if 'Urgent' in item.tags|map(attribute='name') and 'Deal' in item.tags|map(attribute='name') %} style="background-color:#c8b6ff;"
+                    {% elif 'Deal' in item.tags|map(attribute='name') %}class="table-primary"
+                    {% elif 'Urgent' in item.tags|map(attribute='name') %}class="table-danger"{% endif %}>
                         <td>{{ item.item }}</td>
                         <td>{{ item.customer }}</td>
                         <td>

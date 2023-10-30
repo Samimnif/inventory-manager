@@ -7,6 +7,7 @@ import socket
 #import requests
 from flask_apscheduler import APScheduler
 from functools import wraps
+from price_finder import *
 
 url = ""
 
@@ -321,6 +322,8 @@ def shopping():
     shopping = load_shop()
     shoppingM = load_shop()
     for item in shoppingM:
+        #if item['purchased'] == 'no':
+        #    item['price'] = get_product_price(item['link'])
         item["date"] = datetime.strptime(item["date"], "%Y-%m-%d @ %H:%M:%S")
     shoppingM.sort(key=lambda x: x["date"], reverse=True)
 
@@ -338,9 +341,9 @@ def shopping():
                 if tag['name'] == i:
                     selected_tags.append(tag)
         if 'archive' in request.form:
-            shopping.append({'item': item, 'customer': customer, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "archive", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags})
+            shopping.append({'item': item, 'customer': customer, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "archive", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags, 'price': get_product_price(link)})
         else:
-            shopping.append({'item': item, 'customer': customer, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags})
+            shopping.append({'item': item, 'customer': customer, 'link': link, 'quantity': quantity, 'id': unique_id, 'purchased': "no", 'date': datetime.now().strftime('%Y-%m-%d @ %H:%M:%S'), 'tags': selected_tags, 'price': get_product_price(link)})
         save_shop()
         return redirect(url_for('shopping'))
     return render_template('shopping.html', shopping_list=shoppingM, tags=load_config()["shopping_type"])

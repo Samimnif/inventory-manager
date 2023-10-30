@@ -638,5 +638,21 @@
         ],
         "order_id": "1234567890",
         "note": "For his Laptop"
+    },
+    {
+        "item": "Logitech M170 Wireless Mouse",
+        "customer": "Sami",
+        "link": "https://www.amazon.ca/dp/B0BPP8DRKL?ref=ppx_yo2ov_dt_b_product_details&th=1",
+        "quantity": "1",
+        "id": "3554917bdafd4851aa0da3949f38eeb7",
+        "purchased": "no",
+        "date": "2023-10-28 @ 12:58:17",
+        "tags": [
+            {
+                "name": "Admin",
+                "color": "#B3679B"
+            }
+        ],
+        "price": "$19.99"
     }
 ]

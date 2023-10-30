@@ -16,7 +16,7 @@ def get_product_price(url):
             domain = parsed_url.netloc
             print(domain)
             #print(soup.body.prettify())
-            #print(soup)
+            print(soup.prettify())
 
             if domain == 'www.memoryexpress.com':
                 price_element = soup.find('div', {'class': 'GrandTotal'})
@@ -32,9 +32,9 @@ def get_product_price(url):
                 price_element = newsoup.find('span', {'class': 'a-offscreen'})
             elif domain == 'www.dell.com':
                 price_element = soup.find('div', {'class': 'ps-dell-price'})
-                print(price_element)
             elif domain == "www.apple.com":
-                price_element = soup.find('div', {'class': 'rc-price'})
+                price_element = soup.find('span', {'class': 'rc-prices-currentprice'})
+                print(price_element)
 
             if price_element:
                 # Extract the price text

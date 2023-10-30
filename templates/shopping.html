@@ -25,6 +25,7 @@
                     <caption><b>Shopping List</b></caption>
                     <thead>
                         <tr>
+                            <th>Price</th>
                             <th>Item</th>
                             <th>Customer</th>
                             <th>Link</th>
@@ -40,6 +41,7 @@
                         {% if 'Urgent' in item.tags|map(attribute='name') and 'Deal' in item.tags|map(attribute='name') %} style="background-color:#c8b6ff;"
                         {% elif 'Deal' in item.tags|map(attribute='name') %}class="table-primary"
                         {% elif 'Urgent' in item.tags|map(attribute='name') %}class="table-danger"{% endif %}>
+                            <td>{{ item.price }}</td>
                             <td>{{ item.item }}</td>
                             <td>{{ item.customer }}</td>
                             <td>
